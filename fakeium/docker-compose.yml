@@ -1,0 +1,50 @@
+version: "3.9"
+
+services:
+
+  fakeium-api:
+    build:
+      context: ./docker
+      dockerfile: Dockerfile
+    image: fakeium-sandbox:latest
+    container_name: fakeium-api
+    restart: unless-stopped
+
+    ports:
+      - "${API_PORT:-8081}:8081"
+
+    volumes:
+      - fakeium-samples:/samples
+      - fakeium-results:/results
+
+    environment:
+      API_PORT:     "8081"
+      CONCURRENCY:  "${CONCURRENCY:-4}"
+      BOX_TIMEOUT:  "${BOX_TIMEOUT:-30}"
+      SAMPLES_DIR:  "/samples"
+      OUTPUT_DIR:   "/results"
+
+    healthcheck:
+      test: ["CMD", "curl", "-sf", "http://localhost:8081/health"]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+      start_period: 15s
+
+    deploy:
+      resources:
+        limits:
+          cpus: "1.0"
+          memory: "512M"
+
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+volumes:
+  fakeium-samples:
+    driver: local
+  fakeium-results:
+    driver: local
