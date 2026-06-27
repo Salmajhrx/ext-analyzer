@@ -1,0 +1,72 @@
+# =============================================================================
+# box-js Sandbox — docker-compose
+# =============================================================================
+# Architecture:
+#   boxjs-api   → REST API server (Hapi), accepts uploads via HTTP
+#     └── spawns sibling Docker containers for each analysis (via Docker socket)
+#         └── each analysis container runs box-js CLI → writes results to /results
+#
+# Start:  docker compose up -d
+# Stop:   docker compose down
+# Logs:   docker compose logs -f boxjs-api
+# =============================================================================
+
+version: "3.9"
+
+services:
+
+  # ── REST API ────────────────────────────────────────────────────────────────
+  boxjs-api:
+    build:
+      context: ./docker
+      dockerfile: Dockerfile
+    image: boxjs-sandbox:latest
+    container_name: boxjs-api
+    restart: unless-stopped
+
+    ports:
+      - "${API_PORT:-8080}:8080"
+
+    volumes:
+      # Mount Docker socket so the API can spawn sibling analysis containers
+      #- /var/run/docker.sock:/var/run/docker.sock:ro
+      # Shared volumes for samples and results
+      - boxjs-samples:/samples
+      - boxjs-results:/results
+
+    environment:
+      API_HOST:      "0.0.0.0"
+      API_PORT:      "8080"
+      CONCURRENCY:   "${CONCURRENCY:-4}"       # parallel analyses
+      BOX_TIMEOUT:   "${BOX_TIMEOUT:-30}"      # seconds per analysis
+      SAMPLES_DIR:   "/samples"
+      OUTPUT_DIR:    "/results"
+      BOXJS_IMAGE:   "capacitorset/box-js"     # image used for sibling containers
+      USE_DOCKER:    "true"                    # false = run box-js directly (less safe)
+
+    healthcheck:
+      test: ["CMD", "curl", "-sf", "http://localhost:8080/health"]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+    # Resource limits for the API process itself (not the analysis containers)
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: "256M"
+
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+# ── Named volumes ─────────────────────────────────────────────────────────────
+volumes:
+  boxjs-samples:
+    driver: local
+  boxjs-results:
+    driver: local
