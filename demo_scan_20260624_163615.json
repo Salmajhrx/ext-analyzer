@@ -1,0 +1,489 @@
+{
+  "meta": {
+    "analyzer": "CXT-SCAN v1.3",
+    "mode": "pre-install",
+    "timestamp": "2026-06-24T09:36:16.057647+00:00",
+    "source": "C:\\Users\\HP\\AppData\\Local\\Temp\\extanalyzer_demo_yh9tx8fw",
+    "unpacked_dir": "C:\\Users\\HP\\AppData\\Local\\Temp\\extanalyzer_demo_yh9tx8fw"
+  },
+  "extension": {
+    "name": "Super PDF Converter Pro",
+    "version": "2.1.0",
+    "manifest_version": 2,
+    "description": "Convert any PDF online for free!",
+    "js_files_count": 2
+  },
+  "scores": {
+    "permissions": 73,
+    "apis": 17,
+    "network": 35,
+    "remote_config": 43,
+    "dynamic_exec": 8,
+    "exfiltration": 127,
+    "sandbox": 0,
+    "rules": 140,
+    "total": 443
+  },
+  "verdict": "MALICIOUS",
+  "findings": {
+    "permissions": {
+      "dangerous": [
+        {
+          "name": "tabs",
+          "score": 4,
+          "reason": "Read URLs and titles of all open tabs"
+        },
+        {
+          "name": "cookies",
+          "score": 8,
+          "reason": "Read/write cookies for any site, enables session hijacking"
+        },
+        {
+          "name": "webRequest",
+          "score": 5,
+          "reason": "Observe all HTTP traffic metadata"
+        },
+        {
+          "name": "webRequestBlocking",
+          "score": 8,
+          "reason": "Intercept and modify/block any HTTP request"
+        },
+        {
+          "name": "storage",
+          "score": 2,
+          "reason": "Local storage (low risk alone, high risk combined)"
+        },
+        {
+          "name": "clipboardRead",
+          "score": 7,
+          "reason": "Read clipboard contents \u2014 can steal copied passwords/2FA"
+        },
+        {
+          "name": "history",
+          "score": 7,
+          "reason": "Full browsing history access"
+        },
+        {
+          "name": "management",
+          "score": 9,
+          "reason": "Can disable/uninstall other extensions"
+        },
+        {
+          "name": "downloads",
+          "score": 4,
+          "reason": "Initiate downloads silently"
+        }
+      ],
+      "host_risks": [
+        {
+          "name": "<all_urls>",
+          "score": 10,
+          "reason": "Wildcard: access to ALL websites"
+        }
+      ],
+      "dangerous_combos": [
+        {
+          "combo": "cookies+webRequest",
+          "score": 9,
+          "reason": "COOKIE THEFT CHAIN: Can intercept requests AND steal cookies \u2192 session hijacking"
+        },
+        {
+          "combo": "clipboardRead+tabs",
+          "score": 8,
+          "reason": "CLIPBOARD SPY: Reads clipboard while knowing which sites you're on"
+        },
+        {
+          "combo": "webRequestBlocking+cookies",
+          "score": 9,
+          "reason": "MITM CAPABLE: Can intercept requests and modify cookie headers"
+        },
+        {
+          "combo": "management+storage",
+          "score": 7,
+          "reason": "PERSISTENCE: Can survive extension cleanup by managing other extensions"
+        }
+      ]
+    },
+    "sensitive_apis": [
+      {
+        "api": "chrome.webRequest.onBeforeSendHeaders",
+        "file": "background.js",
+        "line": 6,
+        "score": 8,
+        "reason": "Intercepts outgoing request headers incl. auth tokens"
+      },
+      {
+        "api": "chrome.cookies.getAll",
+        "file": "content.js",
+        "line": 24,
+        "score": 9,
+        "reason": "Dumps ALL cookies across all sites \u2014 session hijacking"
+      }
+    ],
+    "external_domains": [
+      {
+        "domain": "config.evil-tracker.ru",
+        "url": "https://config.evil-tracker.ru/api/config?id=ext123",
+        "file": "background.js",
+        "score": 8,
+        "category": "suspicious_subdomain",
+        "reason": "Tracking subdomain pattern"
+      },
+      {
+        "domain": "data.evil-tracker.ru",
+        "url": "https://data.evil-tracker.ru/collect",
+        "file": "background.js",
+        "score": 8,
+        "category": "suspicious_subdomain",
+        "reason": "Tracking subdomain pattern"
+      },
+      {
+        "domain": "harvest.tracker.io",
+        "url": "https://harvest.tracker.io/log",
+        "file": "content.js",
+        "score": 9,
+        "category": "suspicious_subdomain",
+        "reason": "Data harvesting subdomain"
+      },
+      {
+        "domain": "exfil.badsite.com",
+        "url": "https://exfil.badsite.com/steal",
+        "file": "content.js",
+        "score": 10,
+        "category": "suspicious_subdomain",
+        "reason": "Explicit exfiltration subdomain"
+      },
+      {
+        "domain": "data.evil-tracker.ru",
+        "url": "https://data.evil-tracker.ru/cookies",
+        "file": "content.js",
+        "score": 8,
+        "category": "suspicious_subdomain",
+        "reason": "Tracking subdomain pattern"
+      }
+    ],
+    "remote_config": [
+      {
+        "pattern": "fetch'\"'\"config'\"'\"",
+        "file": "background.js",
+        "line": 3,
+        "score": 7,
+        "reason": "Fetches remote configuration file"
+      },
+      {
+        "pattern": "newsWebSocket",
+        "file": "background.js",
+        "line": 18,
+        "score": 8,
+        "reason": "WebSocket connection \u2014 enables real-time command-and-control channel"
+      },
+      {
+        "pattern": "wsonmessageevalWebSocketonmessageeval",
+        "file": "background.js",
+        "line": 19,
+        "score": 10,
+        "reason": "LIVE C2: Evaluates WebSocket messages as code"
+      },
+      {
+        "pattern": "wsonmessageFunctionWebSocketFunction",
+        "file": "background.js",
+        "line": 19,
+        "score": 10,
+        "reason": "LIVE C2: Executes WebSocket messages via new Function()"
+      },
+      {
+        "pattern": "onInstalledfetchonStartupfetch",
+        "file": "background.js",
+        "line": 1,
+        "score": 8,
+        "reason": "Fetches remote content on install/startup \u2014 initialization C2 check-in"
+      },
+      {
+        "pattern": "onInstalledfetchonStartupfetch",
+        "file": "background.js",
+        "line": 2,
+        "score": 8,
+        "reason": "Fetches remote content on install/startup \u2014 initialization C2 check-in"
+      },
+      {
+        "pattern": "onInstalledfetchonStartupfetch",
+        "file": "background.js",
+        "line": 3,
+        "score": 8,
+        "reason": "Fetches remote content on install/startup \u2014 initialization C2 check-in"
+      },
+      {
+        "pattern": "onInstalledfetchonStartupfetch",
+        "file": "background.js",
+        "line": 4,
+        "score": 8,
+        "reason": "Fetches remote content on install/startup \u2014 initialization C2 check-in"
+      }
+    ],
+    "dynamic_execution": [
+      {
+        "technique": "eval(variable)",
+        "file": "background.js",
+        "line": 5,
+        "score": 8,
+        "reason": "eval() called on a variable/expression \u2014 dynamic code execution"
+      },
+      {
+        "technique": "eval(variable)",
+        "file": "background.js",
+        "line": 17,
+        "score": 8,
+        "reason": "eval() called on a variable/expression \u2014 dynamic code execution"
+      },
+      {
+        "technique": "eval(variable)",
+        "file": "background.js",
+        "line": 19,
+        "score": 8,
+        "reason": "eval() called on a variable/expression \u2014 dynamic code execution"
+      }
+    ],
+    "exfiltration_chains": [
+      {
+        "chain": "data_transmission",
+        "stage": "transmit",
+        "file": "background.js",
+        "score": 6,
+        "reason": "Fetch POST to remote URL"
+      },
+      {
+        "chain": "data_collection",
+        "stage": "collect",
+        "file": "background.js",
+        "score": 8,
+        "reason": "Intercepts Cookie headers"
+      },
+      {
+        "chain": "data_transmission",
+        "stage": "transmit",
+        "file": "background.js",
+        "score": 6,
+        "reason": "Fetch POST to remote URL"
+      },
+      {
+        "chain": "data_packaging",
+        "stage": "package",
+        "file": "background.js",
+        "score": 3,
+        "reason": "Serializes data to JSON for transmission"
+      },
+      {
+        "chain": "data_transmission",
+        "stage": "transmit",
+        "file": "background.js",
+        "score": 7,
+        "reason": "WebSocket data transmission"
+      },
+      {
+        "chain": "FULL_EXFIL_CHAIN",
+        "stage": "full_chain",
+        "file": "background.js",
+        "score": 10,
+        "reason": "Complete exfiltration chain detected: collect(1 hits) \u2192 package(1 hits) \u2192 transmit(3 hits)"
+      },
+      {
+        "chain": "data_collection",
+        "stage": "collect",
+        "file": "content.js",
+        "score": 7,
+        "reason": "Hooks form submission events"
+      },
+      {
+        "chain": "data_collection",
+        "stage": "collect",
+        "file": "content.js",
+        "score": 8,
+        "reason": "Targets password input fields"
+      },
+      {
+        "chain": "data_collection",
+        "stage": "collect",
+        "file": "content.js",
+        "score": 7,
+        "reason": "Targets email input fields"
+      },
+      {
+        "chain": "data_transmission",
+        "stage": "transmit",
+        "file": "content.js",
+        "score": 8,
+        "reason": "Sends data via sendBeacon \u2014 fires even on page unload"
+      },
+      {
+        "chain": "data_collection",
+        "stage": "collect",
+        "file": "content.js",
+        "score": 4,
+        "reason": "Captures current page URL"
+      },
+      {
+        "chain": "data_packaging",
+        "stage": "package",
+        "file": "content.js",
+        "score": 3,
+        "reason": "Serializes data to JSON for transmission"
+      },
+      {
+        "chain": "data_collection",
+        "stage": "collect",
+        "file": "content.js",
+        "score": 8,
+        "reason": "Installs keylogger via keyboard event listener"
+      },
+      {
+        "chain": "data_transmission",
+        "stage": "transmit",
+        "file": "content.js",
+        "score": 6,
+        "reason": "Fetch POST to remote URL"
+      },
+      {
+        "chain": "data_collection",
+        "stage": "collect",
+        "file": "content.js",
+        "score": 4,
+        "reason": "Captures current page URL"
+      },
+      {
+        "chain": "data_packaging",
+        "stage": "package",
+        "file": "content.js",
+        "score": 3,
+        "reason": "Serializes data to JSON for transmission"
+      },
+      {
+        "chain": "data_packaging",
+        "stage": "package",
+        "file": "content.js",
+        "score": 5,
+        "reason": "Base64-encodes data \u2014 obfuscates exfiltrated content"
+      },
+      {
+        "chain": "data_collection",
+        "stage": "collect",
+        "file": "content.js",
+        "score": 9,
+        "reason": "Dumps all browser cookies"
+      },
+      {
+        "chain": "data_packaging",
+        "stage": "package",
+        "file": "content.js",
+        "score": 3,
+        "reason": "Serializes data to JSON for transmission"
+      },
+      {
+        "chain": "data_transmission",
+        "stage": "transmit",
+        "file": "content.js",
+        "score": 7,
+        "reason": "Sends payload via XHR"
+      },
+      {
+        "chain": "FULL_EXFIL_CHAIN",
+        "stage": "full_chain",
+        "file": "content.js",
+        "score": 10,
+        "reason": "Complete exfiltration chain detected: collect(7 hits) \u2192 package(4 hits) \u2192 transmit(3 hits)"
+      },
+      {
+        "chain": "COOKIE_THEFT",
+        "stage": "full_chain",
+        "file": "content.js",
+        "score": 10,
+        "reason": "CONFIRMED COOKIE THEFT: dump cookies \u2192 serialize \u2192 exfil"
+      },
+      {
+        "chain": "KEYLOGGER",
+        "stage": "full_chain",
+        "file": "content.js",
+        "score": 10,
+        "reason": "KEYLOGGER: keyboard listener \u2192 capture keystrokes \u2192 transmit"
+      },
+      {
+        "chain": "FORM_JACKER",
+        "stage": "full_chain",
+        "file": "content.js",
+        "score": 10,
+        "reason": "FORM JACKING: intercept form submit \u2192 steal field values \u2192 exfil"
+      }
+    ],
+    "rules_matched": [
+      {
+        "rule": "CYBERHAVEN_BEHAVIOUR",
+        "severity": "CRITICAL",
+        "score": 40,
+        "evidence": [
+          "host_permission: <all_urls> \u2014 unrestricted site access",
+          "permission: cookies \u2014 can read/write session cookies on any site",
+          "remote_config: fetches external URL at install/startup time",
+          "exfil_chain: COOKIE_THEFT confirmed \u2014 collect \u2192 serialize \u2192 transmit",
+          "network: external domain(s) on suspicious TLD: config.evil-tracker.ru, data.evil-tracker.ru"
+        ]
+      },
+      {
+        "rule": "DOM_INJECTION_BEHAVIOUR",
+        "severity": "HIGH",
+        "score": 25,
+        "evidence": [
+          "exfil_chain: FORM_JACKER \u2014 intercepts form submit + steals field values",
+          "exfil_chain: KEYLOGGER \u2014 keystroke capture + remote transmit detected",
+          "manifest: content_scripts injected into ALL websites"
+        ]
+      },
+      {
+        "rule": "MASS_DATA_HARVESTER",
+        "severity": "HIGH",
+        "score": 25,
+        "evidence": [
+          "permissions: 4 data-collection perms declared \u2014 tabs, cookies, clipboardRead, history",
+          "exfil: outbound transmit hit(s) present alongside harvest permissions",
+          "network: collected data likely sent to config.evil-tracker.ru"
+        ]
+      },
+      {
+        "rule": "EXTENSION_MANAGEMENT_ABUSE",
+        "severity": "HIGH",
+        "score": 25,
+        "evidence": [
+          "permission: management \u2014 can enable, disable, or uninstall other extensions",
+          "combined: management + storage = can persist state and survive removal"
+        ]
+      },
+      {
+        "rule": "SUSPICIOUS_TLD_EXFIL",
+        "severity": "HIGH",
+        "score": 25,
+        "evidence": [
+          "network: 2 domain(s) on suspicious TLD \u2014 config.evil-tracker.ru, data.evil-tracker.ru",
+          "combined: cookie access + suspicious-TLD contact = high-confidence theft",
+          "exfil: 6 outbound transmit hit(s) paired with sus TLD"
+        ]
+      }
+    ],
+    "sandbox": {
+      "runtime_urls": [],
+      "eval_calls": [],
+      "chrome_api_calls": [],
+      "boxjs_iocs": [],
+      "deobfuscated_files": [],
+      "per_file_scores": [
+        {
+          "file": "background.js",
+          "score": 0,
+          "signals": []
+        },
+        {
+          "file": "content.js",
+          "score": 0,
+          "signals": []
+        }
+      ]
+    }
+  }
+}

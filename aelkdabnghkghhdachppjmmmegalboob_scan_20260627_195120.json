@@ -1,0 +1,1251 @@
+{
+  "meta": {
+    "analyzer": "CXT-SCAN v1.3",
+    "mode": "pre-install",
+    "timestamp": "2026-06-27T12:51:51.182507+00:00",
+    "source": "https://chromewebstore.google.com/detail/powertab-%E6%96%B0%E6%A0%87%E7%AD%BE%E9%A1%B5/aelkdabnghkghhdachppjmmmegalboob",
+    "unpacked_dir": "E:\\EXT ANALYZER\\ext-analyzer-v1.4rules\\ext-analyzer-v13\\samples\\aelkdabnghkghhdachppjmmmegalboob\\unpacked"
+  },
+  "extension": {
+    "name": "__MSG_extName__",
+    "version": "1.0.3",
+    "manifest_version": 3,
+    "description": "__MSG_extDescription__",
+    "js_files_count": 14
+  },
+  "preprocessing": {
+    "summary": "9 minified/inline file(s) detected, 9 expanded via AST pretty-printer",
+    "files_minified": 9,
+    "files_expanded": 9,
+    "per_file": [
+      {
+        "file": "assets\\AIChatModal-BKy3ooqu.js",
+        "was_minified": true,
+        "was_expanded": true,
+        "original_size": 49494,
+        "expanded_size": 73491,
+        "flags": [
+          "avg_line_len=16497>200",
+          "max_line_len=43514>500"
+        ],
+        "error": null
+      },
+      {
+        "file": "assets\\AIProviderPanel-reTTLod3.js",
+        "was_minified": true,
+        "was_expanded": true,
+        "original_size": 26489,
+        "expanded_size": 36597,
+        "flags": [
+          "avg_line_len=26488>200",
+          "max_line_len=26488>500",
+          "top_line_ratio=1.00>0.85",
+          "single_or_two_line_large_file"
+        ],
+        "error": null
+      },
+      {
+        "file": "assets\\html2canvas.esm-DXEQVQnt.js",
+        "was_minified": true,
+        "was_expanded": true,
+        "original_size": 200163,
+        "expanded_size": 243740,
+        "flags": [
+          "avg_line_len=40032>200",
+          "max_line_len=158624>500"
+        ],
+        "error": null
+      },
+      {
+        "file": "assets\\index-BJXs6d5x.js",
+        "was_minified": true,
+        "was_expanded": true,
+        "original_size": 2076297,
+        "expanded_size": 2794632,
+        "flags": [
+          "avg_line_len=8508>200",
+          "max_line_len=407954>500"
+        ],
+        "error": null
+      },
+      {
+        "file": "assets\\index.es-B4mXvKAq.js",
+        "was_minified": true,
+        "was_expanded": true,
+        "original_size": 158790,
+        "expanded_size": 216882,
+        "flags": [
+          "avg_line_len=26464>200",
+          "max_line_len=92775>500"
+        ],
+        "error": null
+      },
+      {
+        "file": "assets\\jspdf.es.min-CJmYdHJ2.js",
+        "was_minified": true,
+        "was_expanded": true,
+        "original_size": 385921,
+        "expanded_size": 539568,
+        "flags": [
+          "avg_line_len=4884>200",
+          "max_line_len=161593>500"
+        ],
+        "error": null
+      },
+      {
+        "file": "assets\\jszip.min-BBtDUe1n.js",
+        "was_minified": true,
+        "was_expanded": true,
+        "original_size": 96980,
+        "expanded_size": 156510,
+        "flags": [
+          "avg_line_len=48489>200",
+          "max_line_len=90540>500",
+          "single_or_two_line_large_file"
+        ],
+        "error": null
+      },
+      {
+        "file": "assets\\pdf-DG1DLs-g.js",
+        "was_minified": true,
+        "was_expanded": true,
+        "original_size": 310326,
+        "expanded_size": 487343,
+        "flags": [
+          "avg_line_len=38790>200",
+          "max_line_len=95097>500"
+        ],
+        "error": null
+      },
+      {
+        "file": "assets\\purify.es-BZstNxVn.js",
+        "was_minified": true,
+        "was_expanded": true,
+        "original_size": 25426,
+        "expanded_size": 31868,
+        "flags": [
+          "avg_line_len=8474>200",
+          "max_line_len=24267>500"
+        ],
+        "error": null
+      }
+    ]
+  },
+  "scores": {
+    "permissions": 19,
+    "apis": 19,
+    "network": 75,
+    "remote_config": 0,
+    "dynamic_exec": 23,
+    "exfiltration": 103,
+    "sandbox": 56,
+    "rules": 0,
+    "total": 295
+  },
+  "verdict": "MALICIOUS",
+  "findings": {
+    "permissions": {
+      "dangerous": [
+        {
+          "name": "storage",
+          "score": 2,
+          "reason": "Local storage (low risk alone, high risk combined)"
+        },
+        {
+          "name": "declarativeNetRequest",
+          "score": 3,
+          "reason": "Modify network rules \u2014 can redirect traffic"
+        },
+        {
+          "name": "tabs",
+          "score": 4,
+          "reason": "Read URLs and titles of all open tabs"
+        }
+      ],
+      "host_risks": [
+        {
+          "name": "https://api.powertab.link/*",
+          "score": 10,
+          "reason": "Detected <all_urls> : access to ALL websites"
+        },
+        {
+          "name": "https://chat.deepseek.com/*",
+          "score": 10,
+          "reason": "Detected <all_urls> : access to ALL websites"
+        },
+        {
+          "name": "https://api.moonshot.ai/*",
+          "score": 10,
+          "reason": "Detected <all_urls> : access to ALL websites"
+        },
+        {
+          "name": "https://api.moonshot.cn/*",
+          "score": 10,
+          "reason": "Detected <all_urls> : access to ALL websites"
+        },
+        {
+          "name": "https://kimi.com/*",
+          "score": 10,
+          "reason": "Detected <all_urls> : access to ALL websites"
+        },
+        {
+          "name": "https://*.kimi.com/*",
+          "score": 10,
+          "reason": "Detected <all_urls> : access to ALL websites"
+        },
+        {
+          "name": "https://chatgpt.com/*",
+          "score": 10,
+          "reason": "Detected <all_urls> : access to ALL websites"
+        },
+        {
+          "name": "https://*.chatgpt.com/*",
+          "score": 10,
+          "reason": "Detected <all_urls> : access to ALL websites"
+        },
+        {
+          "name": "https://api.anthropic.com/*",
+          "score": 10,
+          "reason": "Detected <all_urls> : access to ALL websites"
+        },
+        {
+          "name": "https://claude.ai/*",
+          "score": 10,
+          "reason": "Detected <all_urls> : access to ALL websites"
+        },
+        {
+          "name": "https://*.claude.ai/*",
+          "score": 10,
+          "reason": "Detected <all_urls> : access to ALL websites"
+        },
+        {
+          "name": "https://chatglm.cn/*",
+          "score": 10,
+          "reason": "Detected <all_urls> : access to ALL websites"
+        },
+        {
+          "name": "https://*.chatglm.cn/*",
+          "score": 10,
+          "reason": "Detected <all_urls> : access to ALL websites"
+        },
+        {
+          "name": "https://open.bigmodel.cn/*",
+          "score": 10,
+          "reason": "Detected <all_urls> : access to ALL websites"
+        },
+        {
+          "name": "https://dashscope.aliyuncs.com/*",
+          "score": 10,
+          "reason": "Detected <all_urls> : access to ALL websites"
+        },
+        {
+          "name": "https://tongyi.aliyun.com/*",
+          "score": 10,
+          "reason": "Detected <all_urls> : access to ALL websites"
+        },
+        {
+          "name": "https://generativelanguage.googleapis.com/*",
+          "score": 10,
+          "reason": "Detected <all_urls> : access to ALL websites"
+        },
+        {
+          "name": "https://api.kimi.com/*",
+          "score": 10,
+          "reason": "Detected <all_urls> : access to ALL websites"
+        },
+        {
+          "name": "https://*.moonshot.cn/*",
+          "score": 10,
+          "reason": "Detected <all_urls> : access to ALL websites"
+        },
+        {
+          "name": "https://api.duckduckgo.com/*",
+          "score": 10,
+          "reason": "Detected <all_urls> : access to ALL websites"
+        },
+        {
+          "name": "https://*.wikipedia.org/*",
+          "score": 10,
+          "reason": "Detected <all_urls> : access to ALL websites"
+        },
+        {
+          "name": "https://*.bing.com/*",
+          "score": 10,
+          "reason": "Detected <all_urls> : access to ALL websites"
+        },
+        {
+          "name": "https://*.duckduckgo.com/*",
+          "score": 10,
+          "reason": "Detected <all_urls> : access to ALL websites"
+        }
+      ],
+      "dangerous_combos": []
+    },
+    "sensitive_apis": [
+      {
+        "api": "chrome.webRequest.onHeadersReceived",
+        "file": "background.js",
+        "line": 39,
+        "score": 7,
+        "reason": "Intercepts and can modify server response headers"
+      },
+      {
+        "api": "chrome.webRequest.onHeadersReceived",
+        "file": "background.js",
+        "line": 41,
+        "score": 7,
+        "reason": "Intercepts and can modify server response headers"
+      },
+      {
+        "api": "chrome.storage.sync.get",
+        "file": "background.js",
+        "line": 94,
+        "score": 4,
+        "reason": "Reads synced storage \u2014 may contain sensitive config"
+      },
+      {
+        "api": "localStorage.getItem",
+        "file": "background.js",
+        "line": 161,
+        "score": 4,
+        "reason": "Reads local storage \u2014 may contain tokens/session data"
+      },
+      {
+        "api": "sessionStorage.getItem",
+        "file": "background.js",
+        "line": 172,
+        "score": 4,
+        "reason": "Reads session storage"
+      },
+      {
+        "api": "localStorage.getItem",
+        "file": "bookmarklet.js",
+        "line": 88,
+        "score": 4,
+        "reason": "Reads local storage \u2014 may contain tokens/session data"
+      },
+      {
+        "api": "sessionStorage.getItem",
+        "file": "bookmarklet.js",
+        "line": 111,
+        "score": 4,
+        "reason": "Reads session storage"
+      },
+      {
+        "api": "localStorage.getItem",
+        "file": "assets\\AIChatModal-BKy3ooqu.js",
+        "line": 93,
+        "score": 4,
+        "reason": "Reads local storage \u2014 may contain tokens/session data"
+      },
+      {
+        "api": "localStorage.getItem",
+        "file": "assets\\AIChatModal-BKy3ooqu.js",
+        "line": 117,
+        "score": 4,
+        "reason": "Reads local storage \u2014 may contain tokens/session data"
+      },
+      {
+        "api": "localStorage.getItem",
+        "file": "assets\\AIProviderPanel-reTTLod3.js",
+        "line": 263,
+        "score": 4,
+        "reason": "Reads local storage \u2014 may contain tokens/session data"
+      },
+      {
+        "api": "localStorage.getItem",
+        "file": "assets\\index-BJXs6d5x.js",
+        "line": 11724,
+        "score": 4,
+        "reason": "Reads local storage \u2014 may contain tokens/session data"
+      },
+      {
+        "api": "localStorage.getItem",
+        "file": "assets\\index-BJXs6d5x.js",
+        "line": 12515,
+        "score": 4,
+        "reason": "Reads local storage \u2014 may contain tokens/session data"
+      },
+      {
+        "api": "localStorage.getItem",
+        "file": "assets\\index-BJXs6d5x.js",
+        "line": 12524,
+        "score": 4,
+        "reason": "Reads local storage \u2014 may contain tokens/session data"
+      },
+      {
+        "api": "localStorage.getItem",
+        "file": "assets\\index-BJXs6d5x.js",
+        "line": 12544,
+        "score": 4,
+        "reason": "Reads local storage \u2014 may contain tokens/session data"
+      },
+      {
+        "api": "localStorage.getItem",
+        "file": "assets\\index-BJXs6d5x.js",
+        "line": 21607,
+        "score": 4,
+        "reason": "Reads local storage \u2014 may contain tokens/session data"
+      },
+      {
+        "api": "localStorage.getItem",
+        "file": "assets\\index-BJXs6d5x.js",
+        "line": 37809,
+        "score": 4,
+        "reason": "Reads local storage \u2014 may contain tokens/session data"
+      },
+      {
+        "api": "localStorage.getItem",
+        "file": "assets\\index-BJXs6d5x.js",
+        "line": 37822,
+        "score": 4,
+        "reason": "Reads local storage \u2014 may contain tokens/session data"
+      },
+      {
+        "api": "localStorage.getItem",
+        "file": "assets\\index-BJXs6d5x.js",
+        "line": 37920,
+        "score": 4,
+        "reason": "Reads local storage \u2014 may contain tokens/session data"
+      },
+      {
+        "api": "localStorage.getItem",
+        "file": "assets\\index-BJXs6d5x.js",
+        "line": 37942,
+        "score": 4,
+        "reason": "Reads local storage \u2014 may contain tokens/session data"
+      },
+      {
+        "api": "localStorage.getItem",
+        "file": "assets\\index-BJXs6d5x.js",
+        "line": 37950,
+        "score": 4,
+        "reason": "Reads local storage \u2014 may contain tokens/session data"
+      },
+      {
+        "api": "localStorage.getItem",
+        "file": "assets\\index-BJXs6d5x.js",
+        "line": 67754,
+        "score": 4,
+        "reason": "Reads local storage \u2014 may contain tokens/session data"
+      }
+    ],
+    "external_domains": [
+      {
+        "domain": "chat.deepseek.com",
+        "url": "https://chat.deepseek.com/*",
+        "file": "background.js",
+        "score": 1,
+        "category": "external_domain",
+        "reason": "External domain contact"
+      },
+      {
+        "domain": "chat.deepseek.com\uff0c\u7136\u540e\u518d\u53d1\u9001\u6d88\u606f",
+        "url": "https://chat.deepseek.com\uff0c\u7136\u540e\u518d\u53d1\u9001\u6d88\u606f",
+        "file": "background.js",
+        "score": 1,
+        "category": "external_domain",
+        "reason": "External domain contact"
+      },
+      {
+        "domain": "chat.deepseek.com",
+        "url": "https://chat.deepseek.com/*",
+        "file": "assets\\AIChatModal-BKy3ooqu.js",
+        "score": 1,
+        "category": "external_domain",
+        "reason": "External domain contact"
+      },
+      {
+        "domain": "chat.deepseek.com\uff0c\u7136\u540e\u518d\u53d1\u9001\u6d88\u606f",
+        "url": "https://chat.deepseek.com\uff0c\u7136\u540e\u518d\u53d1\u9001\u6d88\u606f",
+        "file": "assets\\AIChatModal-BKy3ooqu.js",
+        "score": 1,
+        "category": "external_domain",
+        "reason": "External domain contact"
+      },
+      {
+        "domain": "api.deepseek.com",
+        "url": "https://api.deepseek.com/v1/chat/completions",
+        "file": "assets\\AIChatModal-BKy3ooqu.js",
+        "score": 3,
+        "category": "suspicious_subdomain",
+        "reason": "API endpoint (context-dependent)"
+      },
+      {
+        "domain": "kimi.com",
+        "url": "https://kimi.com/api/chat",
+        "file": "assets\\AIChatModal-BKy3ooqu.js",
+        "score": 1,
+        "category": "external_domain",
+        "reason": "External domain contact"
+      },
+      {
+        "domain": "kimi.com",
+        "url": "https://kimi.com",
+        "file": "assets\\AIChatModal-BKy3ooqu.js",
+        "score": 1,
+        "category": "external_domain",
+        "reason": "External domain contact"
+      },
+      {
+        "domain": "kimi.com",
+        "url": "https://kimi.com/",
+        "file": "assets\\AIChatModal-BKy3ooqu.js",
+        "score": 1,
+        "category": "external_domain",
+        "reason": "External domain contact"
+      },
+      {
+        "domain": "api.moonshot.ai",
+        "url": "https://api.moonshot.ai/v1/chat/completions",
+        "file": "assets\\AIChatModal-BKy3ooqu.js",
+        "score": 3,
+        "category": "suspicious_subdomain",
+        "reason": "API endpoint (context-dependent)"
+      },
+      {
+        "domain": "chatgpt.com",
+        "url": "https://chatgpt.com/backend-api/conversation",
+        "file": "assets\\AIChatModal-BKy3ooqu.js",
+        "score": 1,
+        "category": "external_domain",
+        "reason": "External domain contact"
+      },
+      {
+        "domain": "chatgpt.com",
+        "url": "https://chatgpt.com",
+        "file": "assets\\AIChatModal-BKy3ooqu.js",
+        "score": 1,
+        "category": "external_domain",
+        "reason": "External domain contact"
+      },
+      {
+        "domain": "chatgpt.com",
+        "url": "https://chatgpt.com/",
+        "file": "assets\\AIChatModal-BKy3ooqu.js",
+        "score": 1,
+        "category": "external_domain",
+        "reason": "External domain contact"
+      },
+      {
+        "domain": "claude.ai",
+        "url": "https://claude.ai/api/organizations/default/chat_conversations",
+        "file": "assets\\AIChatModal-BKy3ooqu.js",
+        "score": 1,
+        "category": "external_domain",
+        "reason": "External domain contact"
+      },
+      {
+        "domain": "claude.ai",
+        "url": "https://claude.ai",
+        "file": "assets\\AIChatModal-BKy3ooqu.js",
+        "score": 1,
+        "category": "external_domain",
+        "reason": "External domain contact"
+      },
+      {
+        "domain": "claude.ai",
+        "url": "https://claude.ai/",
+        "file": "assets\\AIChatModal-BKy3ooqu.js",
+        "score": 1,
+        "category": "external_domain",
+        "reason": "External domain contact"
+      },
+      {
+        "domain": "api.anthropic.com",
+        "url": "https://api.anthropic.com/v1/messages",
+        "file": "assets\\AIChatModal-BKy3ooqu.js",
+        "score": 3,
+        "category": "suspicious_subdomain",
+        "reason": "API endpoint (context-dependent)"
+      },
+      {
+        "domain": "chatglm.cn",
+        "url": "https://chatglm.cn/chatglm/backend-api/assistant/stream",
+        "file": "assets\\AIChatModal-BKy3ooqu.js",
+        "score": 6,
+        "category": "suspicious_tld",
+        "reason": "Chinese TLD \u2014 elevated risk for exfil"
+      },
+      {
+        "domain": "chatglm.cn",
+        "url": "https://chatglm.cn",
+        "file": "assets\\AIChatModal-BKy3ooqu.js",
+        "score": 6,
+        "category": "suspicious_tld",
+        "reason": "Chinese TLD \u2014 elevated risk for exfil"
+      },
+      {
+        "domain": "chatglm.cn",
+        "url": "https://chatglm.cn/",
+        "file": "assets\\AIChatModal-BKy3ooqu.js",
+        "score": 6,
+        "category": "suspicious_tld",
+        "reason": "Chinese TLD \u2014 elevated risk for exfil"
+      },
+      {
+        "domain": "open.bigmodel.cn",
+        "url": "https://open.bigmodel.cn/api/paas/v4/chat/completions",
+        "file": "assets\\AIChatModal-BKy3ooqu.js",
+        "score": 6,
+        "category": "suspicious_tld",
+        "reason": "Chinese TLD \u2014 elevated risk for exfil"
+      },
+      {
+        "domain": "tongyi.aliyun.com",
+        "url": "https://tongyi.aliyun.com/qianwen/backend-api/chat/stream",
+        "file": "assets\\AIChatModal-BKy3ooqu.js",
+        "score": 1,
+        "category": "external_domain",
+        "reason": "External domain contact"
+      },
+      {
+        "domain": "tongyi.aliyun.com",
+        "url": "https://tongyi.aliyun.com",
+        "file": "assets\\AIChatModal-BKy3ooqu.js",
+        "score": 1,
+        "category": "external_domain",
+        "reason": "External domain contact"
+      },
+      {
+        "domain": "tongyi.aliyun.com",
+        "url": "https://tongyi.aliyun.com/",
+        "file": "assets\\AIChatModal-BKy3ooqu.js",
+        "score": 1,
+        "category": "external_domain",
+        "reason": "External domain contact"
+      },
+      {
+        "domain": "dashscope.aliyuncs.com",
+        "url": "https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions",
+        "file": "assets\\AIChatModal-BKy3ooqu.js",
+        "score": 1,
+        "category": "external_domain",
+        "reason": "External domain contact"
+      },
+      {
+        "domain": "chat.deepseek.com",
+        "url": "https://chat.deepseek.com",
+        "file": "assets\\AIProviderPanel-reTTLod3.js",
+        "score": 1,
+        "category": "external_domain",
+        "reason": "External domain contact"
+      },
+      {
+        "domain": "chat.deepseek.com",
+        "url": "https://chat.deepseek.com",
+        "file": "assets\\AIProviderPanel-reTTLod3.js",
+        "score": 1,
+        "category": "external_domain",
+        "reason": "External domain contact"
+      },
+      {
+        "domain": "kimi.com",
+        "url": "https://kimi.com",
+        "file": "assets\\AIProviderPanel-reTTLod3.js",
+        "score": 1,
+        "category": "external_domain",
+        "reason": "External domain contact"
+      },
+      {
+        "domain": "kimi.com",
+        "url": "https://kimi.com",
+        "file": "assets\\AIProviderPanel-reTTLod3.js",
+        "score": 1,
+        "category": "external_domain",
+        "reason": "External domain contact"
+      },
+      {
+        "domain": "chatgpt.com",
+        "url": "https://chatgpt.com",
+        "file": "assets\\AIProviderPanel-reTTLod3.js",
+        "score": 1,
+        "category": "external_domain",
+        "reason": "External domain contact"
+      },
+      {
+        "domain": "chatgpt.com",
+        "url": "https://chatgpt.com",
+        "file": "assets\\AIProviderPanel-reTTLod3.js",
+        "score": 1,
+        "category": "external_domain",
+        "reason": "External domain contact"
+      }
+    ],
+    "remote_config": [],
+    "dynamic_execution": [
+      {
+        "technique": "document.write(dynamic)",
+        "file": "bookmarklet.js",
+        "line": 247,
+        "score": 5,
+        "reason": "Writes dynamic content to DOM \u2014 can inject scripts"
+      },
+      {
+        "technique": "String.fromCharCode(numbers)",
+        "file": "assets\\jspdf.es.min-CJmYdHJ2.js",
+        "line": 2135,
+        "score": 6,
+        "reason": "Builds string from char codes with numeric args \u2014 classic obfuscation"
+      },
+      {
+        "technique": "String.fromCharCode(numbers)",
+        "file": "assets\\jspdf.es.min-CJmYdHJ2.js",
+        "line": 3896,
+        "score": 6,
+        "reason": "Builds string from char codes with numeric args \u2014 classic obfuscation"
+      },
+      {
+        "technique": "String.fromCharCode(numbers)",
+        "file": "assets\\jspdf.es.min-CJmYdHJ2.js",
+        "line": 3907,
+        "score": 6,
+        "reason": "Builds string from char codes with numeric args \u2014 classic obfuscation"
+      },
+      {
+        "technique": "Dense unicode escapes",
+        "file": "assets\\jspdf.es.min-CJmYdHJ2.js",
+        "line": 5695,
+        "score": 4,
+        "reason": "High density of \\u unicode escapes \u2014 suggests string obfuscation"
+      },
+      {
+        "technique": "String.fromCharCode(numbers)",
+        "file": "assets\\jszip.min-BBtDUe1n.js",
+        "line": 180,
+        "score": 6,
+        "reason": "Builds string from char codes with numeric args \u2014 classic obfuscation"
+      },
+      {
+        "technique": "Dense unicode escapes",
+        "file": "assets\\pdf-DG1DLs-g.js",
+        "line": 613,
+        "score": 4,
+        "reason": "High density of \\u unicode escapes \u2014 suggests string obfuscation"
+      },
+      {
+        "technique": "eval(variable)",
+        "file": "assets\\pdf-DG1DLs-g.js",
+        "line": 1329,
+        "score": 8,
+        "reason": "eval() called on a variable/expression \u2014 dynamic code execution"
+      },
+      {
+        "technique": "Dense unicode escapes",
+        "file": "assets\\purify.es-BZstNxVn.js",
+        "line": 148,
+        "score": 4,
+        "reason": "High density of \\u unicode escapes \u2014 suggests string obfuscation"
+      }
+    ],
+    "exfiltration_chains": [
+      {
+        "chain": "data_packaging",
+        "stage": "package",
+        "file": "background.js",
+        "score": 3,
+        "reason": "Serializes data to JSON for transmission"
+      },
+      {
+        "chain": "data_collection",
+        "stage": "collect",
+        "file": "background.js",
+        "score": 5,
+        "reason": "Reads local storage"
+      },
+      {
+        "chain": "data_collection",
+        "stage": "collect",
+        "file": "background.js",
+        "score": 5,
+        "reason": "Reads local storage"
+      },
+      {
+        "chain": "data_collection",
+        "stage": "collect",
+        "file": "background.js",
+        "score": 7,
+        "reason": "Reads document.cookie directly"
+      },
+      {
+        "chain": "COOKIE_THEFT",
+        "stage": "full_chain",
+        "file": "background.js",
+        "score": 10,
+        "reason": "CONFIRMED COOKIE THEFT: dump cookies \u2192 serialize \u2192 exfil"
+      },
+      {
+        "chain": "data_collection",
+        "stage": "collect",
+        "file": "bookmarklet.js",
+        "score": 5,
+        "reason": "Reads local storage"
+      },
+      {
+        "chain": "data_collection",
+        "stage": "collect",
+        "file": "bookmarklet.js",
+        "score": 5,
+        "reason": "Reads local storage"
+      },
+      {
+        "chain": "data_collection",
+        "stage": "collect",
+        "file": "bookmarklet.js",
+        "score": 7,
+        "reason": "Reads document.cookie directly"
+      },
+      {
+        "chain": "data_collection",
+        "stage": "collect",
+        "file": "assets\\AIChatModal-BKy3ooqu.js",
+        "score": 5,
+        "reason": "Reads local storage"
+      },
+      {
+        "chain": "data_collection",
+        "stage": "collect",
+        "file": "assets\\AIChatModal-BKy3ooqu.js",
+        "score": 5,
+        "reason": "Reads local storage"
+      },
+      {
+        "chain": "data_packaging",
+        "stage": "package",
+        "file": "assets\\AIChatModal-BKy3ooqu.js",
+        "score": 3,
+        "reason": "Serializes data to JSON for transmission"
+      },
+      {
+        "chain": "data_packaging",
+        "stage": "package",
+        "file": "assets\\AIChatModal-BKy3ooqu.js",
+        "score": 3,
+        "reason": "Serializes data to JSON for transmission"
+      },
+      {
+        "chain": "data_packaging",
+        "stage": "package",
+        "file": "assets\\AIChatModal-BKy3ooqu.js",
+        "score": 3,
+        "reason": "Serializes data to JSON for transmission"
+      },
+      {
+        "chain": "data_packaging",
+        "stage": "package",
+        "file": "assets\\AIChatModal-BKy3ooqu.js",
+        "score": 3,
+        "reason": "Serializes data to JSON for transmission"
+      },
+      {
+        "chain": "data_packaging",
+        "stage": "package",
+        "file": "assets\\AIChatModal-BKy3ooqu.js",
+        "score": 3,
+        "reason": "Serializes data to JSON for transmission"
+      },
+      {
+        "chain": "data_packaging",
+        "stage": "package",
+        "file": "assets\\AIChatModal-BKy3ooqu.js",
+        "score": 3,
+        "reason": "Serializes data to JSON for transmission"
+      },
+      {
+        "chain": "data_packaging",
+        "stage": "package",
+        "file": "assets\\AIChatModal-BKy3ooqu.js",
+        "score": 3,
+        "reason": "Serializes data to JSON for transmission"
+      },
+      {
+        "chain": "data_packaging",
+        "stage": "package",
+        "file": "assets\\AIChatModal-BKy3ooqu.js",
+        "score": 3,
+        "reason": "Serializes data to JSON for transmission"
+      },
+      {
+        "chain": "data_packaging",
+        "stage": "package",
+        "file": "assets\\AIChatModal-BKy3ooqu.js",
+        "score": 3,
+        "reason": "Serializes data to JSON for transmission"
+      },
+      {
+        "chain": "data_packaging",
+        "stage": "package",
+        "file": "assets\\AIChatModal-BKy3ooqu.js",
+        "score": 3,
+        "reason": "Serializes data to JSON for transmission"
+      },
+      {
+        "chain": "data_packaging",
+        "stage": "package",
+        "file": "assets\\AIChatModal-BKy3ooqu.js",
+        "score": 3,
+        "reason": "Serializes data to JSON for transmission"
+      },
+      {
+        "chain": "data_packaging",
+        "stage": "package",
+        "file": "assets\\AIChatModal-BKy3ooqu.js",
+        "score": 4,
+        "reason": "Packages data as Blob"
+      },
+      {
+        "chain": "data_collection",
+        "stage": "collect",
+        "file": "assets\\AIChatModal-BKy3ooqu.js",
+        "score": 8,
+        "reason": "Installs keylogger via keyboard event listener"
+      },
+      {
+        "chain": "data_collection",
+        "stage": "collect",
+        "file": "assets\\AIChatModal-BKy3ooqu.js",
+        "score": 8,
+        "reason": "Installs keylogger via keyboard event listener"
+      },
+      {
+        "chain": "data_packaging",
+        "stage": "package",
+        "file": "assets\\AIProviderPanel-reTTLod3.js",
+        "score": 3,
+        "reason": "URL-encodes data for transmission"
+      },
+      {
+        "chain": "data_collection",
+        "stage": "collect",
+        "file": "assets\\AIProviderPanel-reTTLod3.js",
+        "score": 5,
+        "reason": "Reads local storage"
+      },
+      {
+        "chain": "data_collection",
+        "stage": "collect",
+        "file": "assets\\AIProviderPanel-reTTLod3.js",
+        "score": 8,
+        "reason": "Installs keylogger via keyboard event listener"
+      },
+      {
+        "chain": "data_collection",
+        "stage": "collect",
+        "file": "assets\\AIProviderPanel-reTTLod3.js",
+        "score": 8,
+        "reason": "Installs keylogger via keyboard event listener"
+      },
+      {
+        "chain": "data_collection",
+        "stage": "collect",
+        "file": "assets\\html2canvas.esm-DXEQVQnt.js",
+        "score": 3,
+        "reason": "Visual fingerprinting"
+      },
+      {
+        "chain": "data_collection",
+        "stage": "collect",
+        "file": "assets\\html2canvas.esm-DXEQVQnt.js",
+        "score": 3,
+        "reason": "Visual fingerprinting"
+      }
+    ],
+    "rules_matched": [],
+    "sandbox": {
+      "runtime_urls": [],
+      "eval_calls": [],
+      "chrome_api_calls": [],
+      "boxjs_iocs": [
+        {
+          "type": "ChromeAPI",
+          "value": {
+            "api": "chrome.runtime",
+            "args": []
+          }
+        },
+        {
+          "type": "ChromeAPI",
+          "value": {
+            "api": "chrome.runtime.onInstalled",
+            "args": []
+          }
+        },
+        {
+          "type": "ChromeAPI",
+          "value": {
+            "api": "chrome.runtime.onInstalled.addListener",
+            "args": []
+          }
+        },
+        {
+          "type": "ChromeAPI",
+          "value": {
+            "api": "chrome.runtime.onInstalled.addListener",
+            "args": []
+          }
+        },
+        {
+          "type": "ChromeAPI",
+          "value": {
+            "api": "chrome.webRequest",
+            "args": []
+          }
+        },
+        {
+          "type": "ChromeAPI",
+          "value": {
+            "api": "chrome.webRequest",
+            "args": []
+          }
+        },
+        {
+          "type": "ChromeAPI",
+          "value": {
+            "api": "chrome.webRequest.onHeadersReceived",
+            "args": []
+          }
+        },
+        {
+          "type": "ChromeAPI",
+          "value": {
+            "api": "chrome.webRequest",
+            "args": []
+          }
+        },
+        {
+          "type": "ChromeAPI",
+          "value": {
+            "api": "chrome.webRequest.onHeadersReceived",
+            "args": []
+          }
+        },
+        {
+          "type": "ChromeAPI",
+          "value": {
+            "api": "chrome.webRequest.onHeadersReceived.addListener",
+            "args": []
+          }
+        },
+        {
+          "type": "ChromeAPI",
+          "value": {
+            "api": "chrome.webRequest.onHeadersReceived.addListener",
+            "args": []
+          }
+        },
+        {
+          "type": "ChromeAPI",
+          "value": {
+            "api": "chrome.runtime",
+            "args": []
+          }
+        },
+        {
+          "type": "ChromeAPI",
+          "value": {
+            "api": "chrome.runtime.onMessage",
+            "args": []
+          }
+        },
+        {
+          "type": "ChromeAPI",
+          "value": {
+            "api": "chrome.runtime.onMessage.addListener",
+            "args": []
+          }
+        },
+        {
+          "type": "ChromeAPI",
+          "value": {
+            "api": "chrome.runtime.onMessage.addListener",
+            "args": []
+          }
+        },
+        {
+          "type": "ChromeAPI",
+          "value": {
+            "api": "chrome.runtime",
+            "args": []
+          }
+        },
+        {
+          "type": "ChromeAPI",
+          "value": {
+            "api": "chrome.runtime.onConnect",
+            "args": []
+          }
+        },
+        {
+          "type": "ChromeAPI",
+          "value": {
+            "api": "chrome.runtime.onConnect.addListener",
+            "args": []
+          }
+        },
+        {
+          "type": "ChromeAPI",
+          "value": {
+            "api": "chrome.runtime.onConnect.addListener",
+            "args": []
+          }
+        },
+        {
+          "type": "ChromeAPI",
+          "value": {
+            "api": "chrome.runtime",
+            "args": []
+          }
+        },
+        {
+          "type": "ChromeAPI",
+          "value": {
+            "api": "chrome.runtime.onConnect",
+            "args": []
+          }
+        },
+        {
+          "type": "ChromeAPI",
+          "value": {
+            "api": "chrome.runtime.onConnect.addListener",
+            "args": []
+          }
+        },
+        {
+          "type": "ChromeAPI",
+          "value": {
+            "api": "chrome.runtime.onConnect.addListener",
+            "args": []
+          }
+        },
+        {
+          "type": "ChromeAPI",
+          "value": {
+            "api": "chrome.runtime",
+            "args": []
+          }
+        },
+        {
+          "type": "ChromeAPI",
+          "value": {
+            "api": "chrome.runtime.onMessage",
+            "args": []
+          }
+        },
+        {
+          "type": "ChromeAPI",
+          "value": {
+            "api": "chrome.runtime.onMessage.addListener",
+            "args": []
+          }
+        },
+        {
+          "type": "ChromeAPI",
+          "value": {
+            "api": "chrome.runtime.onMessage.addListener",
+            "args": []
+          }
+        },
+        {
+          "type": "ChromeAPI",
+          "value": {
+            "api": "chrome.runtime",
+            "args": []
+          }
+        },
+        {
+          "type": "ChromeAPI",
+          "value": {
+            "api": "chrome.runtime.onConnect",
+            "args": []
+          }
+        },
+        {
+          "type": "ChromeAPI",
+          "value": {
+            "api": "chrome.runtime.onConnect.addListener",
+            "args": []
+          }
+        }
+      ],
+      "deobfuscated_files": [],
+      "per_file_scores": [
+        {
+          "file": "background.js",
+          "score": 56,
+          "signals": [
+            "[FAKEIUM] Chrome API: chrome.webRequest",
+            "[FAKEIUM] HIGH-RISK Chrome API: chrome.webRequest",
+            "[FAKEIUM] Chrome API: chrome.webRequest",
+            "[FAKEIUM] HIGH-RISK Chrome API: chrome.webRequest",
+            "[FAKEIUM] Chrome API: chrome.webRequest.onHeadersReceived",
+            "[FAKEIUM] HIGH-RISK Chrome API: chrome.webRequest.onHeadersReceived",
+            "[FAKEIUM] Chrome API: chrome.webRequest",
+            "[FAKEIUM] HIGH-RISK Chrome API: chrome.webRequest",
+            "[FAKEIUM] Chrome API: chrome.webRequest.onHeadersReceived",
+            "[FAKEIUM] HIGH-RISK Chrome API: chrome.webRequest.onHeadersReceived"
+          ]
+        },
+        {
+          "file": "bookmarklet.js",
+          "score": 0,
+          "signals": []
+        },
+        {
+          "file": "assets\\AIChatModal-BKy3ooqu.js",
+          "score": 0,
+          "signals": []
+        },
+        {
+          "file": "assets\\AIProviderPanel-reTTLod3.js",
+          "score": 0,
+          "signals": []
+        },
+        {
+          "file": "assets\\copy-DfCOUvAJ.js",
+          "score": 0,
+          "signals": []
+        },
+        {
+          "file": "assets\\html2canvas.esm-DXEQVQnt.js",
+          "score": 0,
+          "signals": []
+        },
+        {
+          "file": "assets\\index.es-B4mXvKAq.js",
+          "score": 0,
+          "signals": []
+        },
+        {
+          "file": "assets\\jspdf.es.min-CJmYdHJ2.js",
+          "score": 0,
+          "signals": []
+        },
+        {
+          "file": "assets\\jszip.min-BBtDUe1n.js",
+          "score": 0,
+          "signals": []
+        },
+        {
+          "file": "assets\\pdf-DG1DLs-g.js",
+          "score": 0,
+          "signals": []
+        },
+        {
+          "file": "assets\\purify.es-BZstNxVn.js",
+          "score": 0,
+          "signals": []
+        },
+        {
+          "file": "assets\\_commonjs-dynamic-modules-TDtrdbi3.js",
+          "score": 0,
+          "signals": []
+        },
+        {
+          "file": "content-scripts\\deepseek.js",
+          "score": 0,
+          "signals": []
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,275 @@
+{
+  "meta": {
+    "analyzer": "CXT-SCAN v1.3",
+    "mode": "pre-install",
+    "timestamp": "2026-06-27T09:41:46.847090+00:00",
+    "source": "E:\\EXT ANALYZER\\ext-analyzer-v1.4rules\\ext-analyzer-v13\\tab-timer.zip",
+    "unpacked_dir": "E:\\EXT ANALYZER\\ext-analyzer-v1.4rules\\ext-analyzer-v13\\samples\\tab-timer\\unpacked\\tab-timer"
+  },
+  "extension": {
+    "name": "Tab Timer",
+    "version": "1.0.0",
+    "manifest_version": 3,
+    "description": "Tracks how long you have had each tab open. All timing data stays local \u2014 no network requests, no tracking.",
+    "js_files_count": 2
+  },
+  "preprocessing": {
+    "summary": "0 minified/inline file(s) detected, 0 expanded via AST pretty-printer",
+    "files_minified": 0,
+    "files_expanded": 0,
+    "per_file": []
+  },
+  "scores": {
+    "permissions": 6,
+    "apis": 0,
+    "network": 0,
+    "remote_config": 0,
+    "dynamic_exec": 0,
+    "exfiltration": 0,
+    "sandbox": 42,
+    "rules": 0,
+    "total": 48
+  },
+  "verdict": "SUSPICIOUS",
+  "findings": {
+    "permissions": {
+      "dangerous": [
+        {
+          "name": "tabs",
+          "score": 4,
+          "reason": "Read URLs and titles of all open tabs"
+        },
+        {
+          "name": "storage",
+          "score": 2,
+          "reason": "Local storage (low risk alone, high risk combined)"
+        }
+      ],
+      "host_risks": [],
+      "dangerous_combos": []
+    },
+    "sensitive_apis": [],
+    "external_domains": [],
+    "remote_config": [],
+    "dynamic_execution": [],
+    "exfiltration_chains": [],
+    "rules_matched": [],
+    "sandbox": {
+      "runtime_urls": [],
+      "eval_calls": [],
+      "chrome_api_calls": [],
+      "boxjs_iocs": [
+        {
+          "type": "ChromeAPI",
+          "value": {
+            "api": "chrome.tabs",
+            "args": []
+          }
+        },
+        {
+          "type": "ChromeAPI",
+          "value": {
+            "api": "chrome.tabs.onCreated",
+            "args": []
+          }
+        },
+        {
+          "type": "ChromeAPI",
+          "value": {
+            "api": "chrome.tabs.onCreated.addListener",
+            "args": []
+          }
+        },
+        {
+          "type": "ChromeAPI",
+          "value": {
+            "api": "chrome.tabs.onCreated.addListener",
+            "args": []
+          }
+        },
+        {
+          "type": "ChromeAPI",
+          "value": {
+            "api": "chrome.storage",
+            "args": []
+          }
+        },
+        {
+          "type": "ChromeAPI",
+          "value": {
+            "api": "chrome.storage.local",
+            "args": []
+          }
+        },
+        {
+          "type": "ChromeAPI",
+          "value": {
+            "api": "chrome.storage.local.get",
+            "args": []
+          }
+        },
+        {
+          "type": "ChromeAPI",
+          "value": {
+            "api": "chrome.storage.local.get",
+            "args": []
+          }
+        },
+        {
+          "type": "ChromeAPI",
+          "value": {
+            "api": "chrome.tabs",
+            "args": []
+          }
+        },
+        {
+          "type": "ChromeAPI",
+          "value": {
+            "api": "chrome.tabs.onRemoved",
+            "args": []
+          }
+        },
+        {
+          "type": "ChromeAPI",
+          "value": {
+            "api": "chrome.tabs.onRemoved.addListener",
+            "args": []
+          }
+        },
+        {
+          "type": "ChromeAPI",
+          "value": {
+            "api": "chrome.tabs.onRemoved.addListener",
+            "args": []
+          }
+        },
+        {
+          "type": "ChromeAPI",
+          "value": {
+            "api": "chrome.storage",
+            "args": []
+          }
+        },
+        {
+          "type": "ChromeAPI",
+          "value": {
+            "api": "chrome.storage.local",
+            "args": []
+          }
+        },
+        {
+          "type": "ChromeAPI",
+          "value": {
+            "api": "chrome.storage.local.get",
+            "args": []
+          }
+        },
+        {
+          "type": "ChromeAPI",
+          "value": {
+            "api": "chrome.storage.local.get",
+            "args": []
+          }
+        },
+        {
+          "type": "ChromeAPI",
+          "value": {
+            "api": "chrome.runtime",
+            "args": []
+          }
+        },
+        {
+          "type": "ChromeAPI",
+          "value": {
+            "api": "chrome.runtime.onInstalled",
+            "args": []
+          }
+        },
+        {
+          "type": "ChromeAPI",
+          "value": {
+            "api": "chrome.runtime.onInstalled.addListener",
+            "args": []
+          }
+        },
+        {
+          "type": "ChromeAPI",
+          "value": {
+            "api": "chrome.runtime.onInstalled.addListener",
+            "args": []
+          }
+        },
+        {
+          "type": "ChromeAPI",
+          "value": {
+            "api": "chrome.tabs",
+            "args": []
+          }
+        },
+        {
+          "type": "ChromeAPI",
+          "value": {
+            "api": "chrome.tabs.query",
+            "args": []
+          }
+        },
+        {
+          "type": "ChromeAPI",
+          "value": {
+            "api": "chrome.tabs.query",
+            "args": []
+          }
+        },
+        {
+          "type": "ChromeAPI",
+          "value": {
+            "api": "chrome.tabs",
+            "args": []
+          }
+        },
+        {
+          "type": "ChromeAPI",
+          "value": {
+            "api": "chrome.tabs.query",
+            "args": []
+          }
+        },
+        {
+          "type": "ChromeAPI",
+          "value": {
+            "api": "chrome.tabs.query",
+            "args": []
+          }
+        }
+      ],
+      "deobfuscated_files": [],
+      "per_file_scores": [
+        {
+          "file": "background.js",
+          "score": 33,
+          "signals": [
+            "[FAKEIUM] Chrome API: chrome.tabs",
+            "[FAKEIUM] Chrome API: chrome.tabs.onCreated",
+            "[FAKEIUM] Chrome API: chrome.tabs.onCreated.addListener",
+            "[FAKEIUM] Chrome API: chrome.tabs.onCreated.addListener",
+            "[FAKEIUM] Chrome API: chrome.tabs",
+            "[FAKEIUM] Chrome API: chrome.tabs.onRemoved",
+            "[FAKEIUM] Chrome API: chrome.tabs.onRemoved.addListener",
+            "[FAKEIUM] Chrome API: chrome.tabs.onRemoved.addListener",
+            "[FAKEIUM] Chrome API: chrome.tabs",
+            "[FAKEIUM] Chrome API: chrome.tabs.query"
+          ]
+        },
+        {
+          "file": "popup.js",
+          "score": 9,
+          "signals": [
+            "[FAKEIUM] Chrome API: chrome.tabs",
+            "[FAKEIUM] Chrome API: chrome.tabs.query",
+            "[FAKEIUM] Chrome API: chrome.tabs.query"
+          ]
+        }
+      ]
+    }
+  }
+}

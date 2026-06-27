@@ -1,0 +1,1133 @@
+{
+  "meta": {
+    "analyzer": "CXT-SCAN v1.3",
+    "mode": "pre-install",
+    "timestamp": "2026-06-21T04:40:34.496704+00:00",
+    "source": "kphldkppgfpjadpabfkghmjbhpcmgpdg.crx",
+    "unpacked_dir": "E:\\EXT ANALYZER\\ext-analyzer-v1.4rules\\ext-analyzer-v13\\samples\\kphldkppgfpjadpabfkghmjbhpcmgpdg\\unpacked"
+  },
+  "extension": {
+    "name": "__MSG_extensionName__",
+    "version": "1.1.3",
+    "manifest_version": 3,
+    "description": "__MSG_extensionDescription__",
+    "js_files_count": 18
+  },
+  "scores": {
+    "permissions": 37,
+    "apis": 51,
+    "network": 125,
+    "remote_config": 108,
+    "dynamic_exec": 34,
+    "exfiltration": 221,
+    "sandbox": 0,
+    "rules": 155,
+    "total": 731
+  },
+  "verdict": "MALICIOUS",
+  "findings": {
+    "permissions": {
+      "dangerous": [
+        {
+          "name": "storage",
+          "score": 2,
+          "reason": "Local storage (low risk alone, high risk combined)"
+        },
+        {
+          "name": "declarativeNetRequest",
+          "score": 3,
+          "reason": "Modify network rules \u2014 can redirect traffic"
+        },
+        {
+          "name": "cookies",
+          "score": 8,
+          "reason": "Read/write cookies for any site, enables session hijacking"
+        },
+        {
+          "name": "webRequest",
+          "score": 5,
+          "reason": "Observe all HTTP traffic metadata"
+        }
+      ],
+      "host_risks": [
+        {
+          "name": "https://*/*",
+          "score": 10,
+          "reason": "Wildcard: access to ALL websites"
+        },
+        {
+          "name": "<all_urls>",
+          "score": 10,
+          "reason": "Wildcard: access to ALL websites"
+        }
+      ],
+      "dangerous_combos": [
+        {
+          "combo": "cookies+webRequest",
+          "score": 9,
+          "reason": "COOKIE THEFT CHAIN: Can intercept requests AND steal cookies \u2192 session hijacking"
+        }
+      ]
+    },
+    "sensitive_apis": [
+      {
+        "api": "localStorage.getItem",
+        "file": "aiFindInMainSearch.d85bc82a.js",
+        "line": 91,
+        "score": 4,
+        "reason": "Reads local storage \u2014 may contain tokens/session data"
+      },
+      {
+        "api": "localStorage.getItem",
+        "file": "allWebsite.e084e880.js",
+        "line": 9,
+        "score": 4,
+        "reason": "Reads local storage \u2014 may contain tokens/session data"
+      },
+      {
+        "api": "localStorage.getItem",
+        "file": "bindShop.bf8ce889.js",
+        "line": 5,
+        "score": 4,
+        "reason": "Reads local storage \u2014 may contain tokens/session data"
+      },
+      {
+        "api": "localStorage.getItem",
+        "file": "content-scripts-of-pick.7776a3b9.js",
+        "line": 45,
+        "score": 4,
+        "reason": "Reads local storage \u2014 may contain tokens/session data"
+      },
+      {
+        "api": "localStorage.getItem",
+        "file": "content-scripts-of-pick.7776a3b9.js",
+        "line": 62,
+        "score": 4,
+        "reason": "Reads local storage \u2014 may contain tokens/session data"
+      },
+      {
+        "api": "localStorage.getItem",
+        "file": "content.0f069321.js",
+        "line": 5,
+        "score": 4,
+        "reason": "Reads local storage \u2014 may contain tokens/session data"
+      },
+      {
+        "api": "localStorage.getItem",
+        "file": "detailPanel.ba624b85.js",
+        "line": 5,
+        "score": 4,
+        "reason": "Reads local storage \u2014 may contain tokens/session data"
+      },
+      {
+        "api": "localStorage.getItem",
+        "file": "detailPanelPopUp.b5961dc1.js",
+        "line": 5,
+        "score": 4,
+        "reason": "Reads local storage \u2014 may contain tokens/session data"
+      },
+      {
+        "api": "localStorage.getItem",
+        "file": "findSameGoodsBtn.3ed716dc.js",
+        "line": 5,
+        "score": 4,
+        "reason": "Reads local storage \u2014 may contain tokens/session data"
+      },
+      {
+        "api": "sessionStorage.getItem",
+        "file": "FloatingAssistant.d52f9211.js",
+        "line": 1,
+        "score": 4,
+        "reason": "Reads session storage"
+      },
+      {
+        "api": "localStorage.getItem",
+        "file": "FloatingAssistant.d52f9211.js",
+        "line": 464,
+        "score": 4,
+        "reason": "Reads local storage \u2014 may contain tokens/session data"
+      },
+      {
+        "api": "localStorage.getItem",
+        "file": "installationChecker.1c3dad9b.js",
+        "line": 5,
+        "score": 4,
+        "reason": "Reads local storage \u2014 may contain tokens/session data"
+      },
+      {
+        "api": "chrome.tabs.captureVisibleTab",
+        "file": "options.1087bfb1.js",
+        "line": 1,
+        "score": 8,
+        "reason": "Screenshots active tab \u2014 visual surveillance"
+      },
+      {
+        "api": "localStorage.getItem",
+        "file": "options.1087bfb1.js",
+        "line": 453,
+        "score": 4,
+        "reason": "Reads local storage \u2014 may contain tokens/session data"
+      },
+      {
+        "api": "localStorage.getItem",
+        "file": "orderLogistics.f491b9f7.js",
+        "line": 5,
+        "score": 4,
+        "reason": "Reads local storage \u2014 may contain tokens/session data"
+      },
+      {
+        "api": "localStorage.getItem",
+        "file": "popup.966487c4.js",
+        "line": 5,
+        "score": 4,
+        "reason": "Reads local storage \u2014 may contain tokens/session data"
+      },
+      {
+        "api": "chrome.tabs.captureVisibleTab",
+        "file": "popup.966487c4.js",
+        "line": 93,
+        "score": 8,
+        "reason": "Screenshots active tab \u2014 visual surveillance"
+      },
+      {
+        "api": "localStorage.getItem",
+        "file": "wordsQuickCopy.f8d2e6a5.js",
+        "line": 5,
+        "score": 4,
+        "reason": "Reads local storage \u2014 may contain tokens/session data"
+      },
+      {
+        "api": "localStorage.getItem",
+        "file": "wordsSelection.08ebf15a.js",
+        "line": 5,
+        "score": 4,
+        "reason": "Reads local storage \u2014 may contain tokens/session data"
+      },
+      {
+        "api": "chrome.cookies.getb",
+        "file": "static\\background\\index.js",
+        "line": 1,
+        "score": 7,
+        "reason": "Reads specific site cookie"
+      },
+      {
+        "api": "chrome.declarativeNetRequest.updateDynamicRules",
+        "file": "static\\background\\index.js",
+        "line": 1,
+        "score": 6,
+        "reason": "Dynamically adds traffic redirect rules"
+      },
+      {
+        "api": "chrome.cookies.getAll",
+        "file": "static\\background\\index.js",
+        "line": 52,
+        "score": 9,
+        "reason": "Dumps ALL cookies across all sites \u2014 session hijacking"
+      },
+      {
+        "api": "chrome.cookies.getb",
+        "file": "static\\background\\index.js",
+        "line": 52,
+        "score": 7,
+        "reason": "Reads specific site cookie"
+      },
+      {
+        "api": "chrome.cookies.setb",
+        "file": "static\\background\\index.js",
+        "line": 52,
+        "score": 7,
+        "reason": "Sets/overwrites cookies \u2014 session fixation"
+      },
+      {
+        "api": "chrome.declarativeNetRequest.updateDynamicRules",
+        "file": "static\\background\\index.js",
+        "line": 52,
+        "score": 6,
+        "reason": "Dynamically adds traffic redirect rules"
+      },
+      {
+        "api": "chrome.tabs.captureVisibleTab",
+        "file": "static\\background\\index.js",
+        "line": 52,
+        "score": 8,
+        "reason": "Screenshots active tab \u2014 visual surveillance"
+      },
+      {
+        "api": "chrome.downloads.downloadb",
+        "file": "static\\background\\index.js",
+        "line": 52,
+        "score": 6,
+        "reason": "Silently downloads files to disk"
+      },
+      {
+        "api": "localStorage.getItem",
+        "file": "static\\background\\index.js",
+        "line": 56,
+        "score": 4,
+        "reason": "Reads local storage \u2014 may contain tokens/session data"
+      }
+    ],
+    "external_domains": [
+      {
+        "domain": "gw.alicdn.com",
+        "url": "https://gw.alicdn.com/imgextra/i1/O1CN01sQ11ZX1ozcfT5Hlek_!!6000000005296-55-tps-300-300.svg",
+        "file": "aiFindInMainSearch.d85bc82a.js",
+        "score": 1,
+        "category": "external_domain",
+        "reason": "External domain contact"
+      },
+      {
+        "domain": "1688smartassistant.oss-cn-beijing.aliyuncs.com",
+        "url": "https://1688smartassistant.oss-cn-beijing.aliyuncs.com/test",
+        "file": "aiFindInMainSearch.d85bc82a.js",
+        "score": 1,
+        "category": "external_domain",
+        "reason": "External domain contact"
+      },
+      {
+        "domain": "gw.alicdn.com",
+        "url": "https://gw.alicdn.com/imgextra/i3/O1CN01RbtNno1xR7N4UkwmR_!!6000000006439-55-tps-20-20.svg",
+        "file": "aiFindInMainSearch.d85bc82a.js",
+        "score": 1,
+        "category": "external_domain",
+        "reason": "External domain contact"
+      },
+      {
+        "domain": "img.alicdn.com",
+        "url": "https://img.alicdn.com/imgextra/i2/O1CN01K9QZuc1qAtxtGooFP_!!6000000005456-2-tps-2496-882.png",
+        "file": "aiFindInMainSearch.d85bc82a.js",
+        "score": 1,
+        "category": "external_domain",
+        "reason": "External domain contact"
+      },
+      {
+        "domain": "1688smartassistant.oss-cn-beijing.aliyuncs.com",
+        "url": "https://1688smartassistant.oss-cn-beijing.aliyuncs.com/development",
+        "file": "aiFindInMainSearch.d85bc82a.js",
+        "score": 1,
+        "category": "external_domain",
+        "reason": "External domain contact"
+      },
+      {
+        "domain": "air.1688.com",
+        "url": "https://air.1688.com/kapp/assets-group/haobangshou/UninstallRetention",
+        "file": "aiFindInMainSearch.d85bc82a.js",
+        "score": 1,
+        "category": "external_domain",
+        "reason": "External domain contact"
+      },
+      {
+        "domain": "img.alicdn.com",
+        "url": "https://img.alicdn.com/imgextra/i2/O1CN0148pQIn1gbKf5qlqw6_!!6000000004160-2-tps-2496-882.png",
+        "file": "aiFindInMainSearch.d85bc82a.js",
+        "score": 1,
+        "category": "external_domain",
+        "reason": "External domain contact"
+      },
+      {
+        "domain": "dev.o.alicdn.com",
+        "url": "https://dev.o.alicdn.com/innovateHub/MarketMate/version.json",
+        "file": "aiFindInMainSearch.d85bc82a.js",
+        "score": 1,
+        "category": "external_domain",
+        "reason": "External domain contact"
+      },
+      {
+        "domain": "work.1688.com",
+        "url": "https://work.1688.com/home/buyer.htm?_path_=buyer2017Base/2017buyerbase_trade/buyList",
+        "file": "aiFindInMainSearch.d85bc82a.js",
+        "score": 1,
+        "category": "external_domain",
+        "reason": "External domain contact"
+      },
+      {
+        "domain": "gw.alicdn.com",
+        "url": "https://gw.alicdn.com/imgextra/i1/O1CN014l9H7329KV2MCwH57_!!6000000008049-55-tps-20-20.svg",
+        "file": "aiFindInMainSearch.d85bc82a.js",
+        "score": 1,
+        "category": "external_domain",
+        "reason": "External domain contact"
+      },
+      {
+        "domain": "gw.alicdn.com",
+        "url": "https://gw.alicdn.com/imgextra/i3/O1CN01k6dupu1I3Obu3VX4j_!!6000000000837-55-tps-20-20.svg",
+        "file": "aiFindInMainSearch.d85bc82a.js",
+        "score": 1,
+        "category": "external_domain",
+        "reason": "External domain contact"
+      },
+      {
+        "domain": "img.alicdn.com",
+        "url": "https://img.alicdn.com/imgextra/i3/O1CN01nkJ3kB1h043F7CEQr_!!6000000004214-2-tps-2496-882.png",
+        "file": "aiFindInMainSearch.d85bc82a.js",
+        "score": 1,
+        "category": "external_domain",
+        "reason": "External domain contact"
+      },
+      {
+        "domain": "img.alicdn.com",
+        "url": "https://img.alicdn.com/imgextra/i1/O1CN011KPmKN1qdkut4Ucis_!!6000000005519-2-tps-2496-882.png",
+        "file": "aiFindInMainSearch.d85bc82a.js",
+        "score": 1,
+        "category": "external_domain",
+        "reason": "External domain contact"
+      },
+      {
+        "domain": "gw.alicdn.com",
+        "url": "https://gw.alicdn.com/imgextra/i3/O1CN01dF8rpA1VXhpJQqFg6_!!6000000002663-55-tps-48-48.svg",
+        "file": "aiFindInMainSearch.d85bc82a.js",
+        "score": 1,
+        "category": "external_domain",
+        "reason": "External domain contact"
+      },
+      {
+        "domain": "login.taobao.com",
+        "url": "https://login.taobao.com/?redirect_url=https%3A%2F%2Flogin.1688.com%2Fmember%2Fjump.htm%3Ftarget%3Dhttps%253A%252F%252Flogin.1688.com%252Fmember%252Fm",
+        "file": "aiFindInMainSearch.d85bc82a.js",
+        "score": 1,
+        "category": "external_domain",
+        "reason": "External domain contact"
+      },
+      {
+        "domain": "www.1688.com",
+        "url": "https://www.1688.com/",
+        "file": "aiFindInMainSearch.d85bc82a.js",
+        "score": 1,
+        "category": "external_domain",
+        "reason": "External domain contact"
+      },
+      {
+        "domain": "1688smartassistant.oss-cn-beijing.aliyuncs.com",
+        "url": "https://1688smartassistant.oss-cn-beijing.aliyuncs.com",
+        "file": "aiFindInMainSearch.d85bc82a.js",
+        "score": 1,
+        "category": "external_domain",
+        "reason": "External domain contact"
+      },
+      {
+        "domain": "o.alicdn.com",
+        "url": "https://o.alicdn.com/innovateHub/MarketMate/version.json",
+        "file": "aiFindInMainSearch.d85bc82a.js",
+        "score": 1,
+        "category": "external_domain",
+        "reason": "External domain contact"
+      },
+      {
+        "domain": "gw.alicdn.com",
+        "url": "https://gw.alicdn.com/imgextra/i2/O1CN01WqdzEV1V5leJwX1uo_!!6000000002602-2-tps-96-96.png",
+        "file": "aiFindInMainSearch.d85bc82a.js",
+        "score": 1,
+        "category": "external_domain",
+        "reason": "External domain contact"
+      },
+      {
+        "domain": "feross.org",
+        "url": "https://feross.org/opensource",
+        "file": "aiFindInMainSearch.d85bc82a.js",
+        "score": 1,
+        "category": "external_domain",
+        "reason": "External domain contact"
+      },
+      {
+        "domain": "feross.org",
+        "url": "https://feross.org",
+        "file": "aiFindInMainSearch.d85bc82a.js",
+        "score": 1,
+        "category": "external_domain",
+        "reason": "External domain contact"
+      },
+      {
+        "domain": "github.com",
+        "url": "https://github.com/ashtuchkin/iconv-lite/wiki/Use-Buffers-when-decoding",
+        "file": "aiFindInMainSearch.d85bc82a.js",
+        "score": 1,
+        "category": "external_domain",
+        "reason": "External domain contact"
+      },
+      {
+        "domain": "feross.org",
+        "url": "https://feross.org/opensource",
+        "file": "aiFindInMainSearch.d85bc82a.js",
+        "score": 1,
+        "category": "external_domain",
+        "reason": "External domain contact"
+      },
+      {
+        "domain": "feross.org",
+        "url": "https://feross.org",
+        "file": "aiFindInMainSearch.d85bc82a.js",
+        "score": 1,
+        "category": "external_domain",
+        "reason": "External domain contact"
+      },
+      {
+        "domain": "feross.org",
+        "url": "https://feross.org/opensource",
+        "file": "aiFindInMainSearch.d85bc82a.js",
+        "score": 1,
+        "category": "external_domain",
+        "reason": "External domain contact"
+      },
+      {
+        "domain": "feross.org",
+        "url": "https://feross.org/opensource",
+        "file": "aiFindInMainSearch.d85bc82a.js",
+        "score": 1,
+        "category": "external_domain",
+        "reason": "External domain contact"
+      },
+      {
+        "domain": "feross.org",
+        "url": "https://feross.org",
+        "file": "aiFindInMainSearch.d85bc82a.js",
+        "score": 1,
+        "category": "external_domain",
+        "reason": "External domain contact"
+      },
+      {
+        "domain": "feross.org",
+        "url": "https://feross.org/opensource",
+        "file": "aiFindInMainSearch.d85bc82a.js",
+        "score": 1,
+        "category": "external_domain",
+        "reason": "External domain contact"
+      },
+      {
+        "domain": "wxthirdplatform-p.1688.com",
+        "url": "https://wxthirdplatform-p.1688.com",
+        "file": "aiFindInMainSearch.d85bc82a.js",
+        "score": 1,
+        "category": "external_domain",
+        "reason": "External domain contact"
+      },
+      {
+        "domain": "fourier.taobao.com",
+        "url": "https://fourier.taobao.com/ts?ext=200&uuid=",
+        "file": "aiFindInMainSearch.d85bc82a.js",
+        "score": 1,
+        "category": "external_domain",
+        "reason": "External domain contact"
+      }
+    ],
+    "remote_config": [
+      {
+        "pattern": "wsonmessageFunctionWebSocketFunction",
+        "file": "aiFindInMainSearch.d85bc82a.js",
+        "line": 1,
+        "score": 10,
+        "reason": "LIVE C2: Executes WebSocket messages via new Function()"
+      },
+      {
+        "pattern": "fetchversionfetchupdate",
+        "file": "aiFindInMainSearch.d85bc82a.js",
+        "line": 1,
+        "score": 5,
+        "reason": "Fetches remote version/update info \u2014 may trigger code replacement"
+      },
+      {
+        "pattern": "setIntervalfetchsetTimeoutfetch",
+        "file": "aiFindInMainSearch.d85bc82a.js",
+        "line": 43,
+        "score": 6,
+        "reason": "Periodic remote fetch \u2014 polls for updated instructions"
+      },
+      {
+        "pattern": "fetchversionfetchupdate",
+        "file": "aiFindInMainSearch.d85bc82a.js",
+        "line": 43,
+        "score": 5,
+        "reason": "Fetches remote version/update info \u2014 may trigger code replacement"
+      },
+      {
+        "pattern": "wsonmessageFunctionWebSocketFunction",
+        "file": "aiFindInMainSearch.d85bc82a.js",
+        "line": 47,
+        "score": 10,
+        "reason": "LIVE C2: Executes WebSocket messages via new Function()"
+      },
+      {
+        "pattern": "setIntervalfetchsetTimeoutfetch",
+        "file": "aiFindInMainSearch.d85bc82a.js",
+        "line": 47,
+        "score": 6,
+        "reason": "Periodic remote fetch \u2014 polls for updated instructions"
+      },
+      {
+        "pattern": "fetchversionfetchupdate",
+        "file": "aiFindInMainSearch.d85bc82a.js",
+        "line": 47,
+        "score": 5,
+        "reason": "Fetches remote version/update info \u2014 may trigger code replacement"
+      },
+      {
+        "pattern": "'\"script'\"fetchfetch'\"script'\"",
+        "file": "aiFindInMainSearch.d85bc82a.js",
+        "line": 47,
+        "score": 8,
+        "reason": "Fetches remote 'script' payload"
+      },
+      {
+        "pattern": "documentcreateElement'\"script'\"srcs=",
+        "file": "aiFindInMainSearch.d85bc82a.js",
+        "line": 87,
+        "score": 8,
+        "reason": "Dynamically creates script tag with remote src \u2014 loads remote code"
+      },
+      {
+        "pattern": "wsonmessageFunctionWebSocketFunction",
+        "file": "aiFindInMainSearch.d85bc82a.js",
+        "line": 87,
+        "score": 10,
+        "reason": "LIVE C2: Executes WebSocket messages via new Function()"
+      },
+      {
+        "pattern": "setIntervalfetchsetTimeoutfetch",
+        "file": "aiFindInMainSearch.d85bc82a.js",
+        "line": 87,
+        "score": 6,
+        "reason": "Periodic remote fetch \u2014 polls for updated instructions"
+      },
+      {
+        "pattern": "fetchversionfetchupdate",
+        "file": "aiFindInMainSearch.d85bc82a.js",
+        "line": 87,
+        "score": 5,
+        "reason": "Fetches remote version/update info \u2014 may trigger code replacement"
+      },
+      {
+        "pattern": "'\"script'\"fetchfetch'\"script'\"",
+        "file": "aiFindInMainSearch.d85bc82a.js",
+        "line": 87,
+        "score": 8,
+        "reason": "Fetches remote 'script' payload"
+      },
+      {
+        "pattern": "newsWebSocket",
+        "file": "aiFindInMainSearch.d85bc82a.js",
+        "line": 91,
+        "score": 8,
+        "reason": "WebSocket connection \u2014 enables real-time command-and-control channel"
+      },
+      {
+        "pattern": "wsonmessageFunctionWebSocketFunction",
+        "file": "aiFindInMainSearch.d85bc82a.js",
+        "line": 91,
+        "score": 10,
+        "reason": "LIVE C2: Executes WebSocket messages via new Function()"
+      },
+      {
+        "pattern": "fetchthenJSONparsethen",
+        "file": "aiFindInMainSearch.d85bc82a.js",
+        "line": 41,
+        "score": 5,
+        "reason": "Fetch \u2192 parse JSON \u2192 act chain \u2014 remote instructions pattern"
+      },
+      {
+        "pattern": "fetchthenJSONparsethen",
+        "file": "aiFindInMainSearch.d85bc82a.js",
+        "line": 42,
+        "score": 5,
+        "reason": "Fetch \u2192 parse JSON \u2192 act chain \u2014 remote instructions pattern"
+      },
+      {
+        "pattern": "fetchthenJSONparsethen",
+        "file": "aiFindInMainSearch.d85bc82a.js",
+        "line": 43,
+        "score": 5,
+        "reason": "Fetch \u2192 parse JSON \u2192 act chain \u2014 remote instructions pattern"
+      },
+      {
+        "pattern": "fetchthenJSONparsethen",
+        "file": "aiFindInMainSearch.d85bc82a.js",
+        "line": 44,
+        "score": 5,
+        "reason": "Fetch \u2192 parse JSON \u2192 act chain \u2014 remote instructions pattern"
+      },
+      {
+        "pattern": "fetchthenJSONparsethen",
+        "file": "aiFindInMainSearch.d85bc82a.js",
+        "line": 45,
+        "score": 5,
+        "reason": "Fetch \u2192 parse JSON \u2192 act chain \u2014 remote instructions pattern"
+      }
+    ],
+    "dynamic_execution": [
+      {
+        "technique": "String.fromCharCode(numbers)",
+        "file": "aiFindInMainSearch.d85bc82a.js",
+        "line": 1,
+        "score": 6,
+        "reason": "Builds string from char codes with numeric args \u2014 classic obfuscation"
+      },
+      {
+        "technique": "String.fromCharCode(numbers)",
+        "file": "aiFindInMainSearch.d85bc82a.js",
+        "line": 13,
+        "score": 6,
+        "reason": "Builds string from char codes with numeric args \u2014 classic obfuscation"
+      },
+      {
+        "technique": "window[var]()",
+        "file": "aiFindInMainSearch.d85bc82a.js",
+        "line": 47,
+        "score": 6,
+        "reason": "Calls window method via bracket notation \u2014 obfuscates function name"
+      },
+      {
+        "technique": "String.fromCharCode(numbers)",
+        "file": "aiFindInMainSearch.d85bc82a.js",
+        "line": 47,
+        "score": 6,
+        "reason": "Builds string from char codes with numeric args \u2014 classic obfuscation"
+      },
+      {
+        "technique": "XOR char operations",
+        "file": "aiFindInMainSearch.d85bc82a.js",
+        "line": 47,
+        "score": 5,
+        "reason": "XOR operations on single-char variables \u2014 string encryption technique"
+      },
+      {
+        "technique": "Dense unicode escapes",
+        "file": "aiFindInMainSearch.d85bc82a.js",
+        "line": 47,
+        "score": 4,
+        "reason": "High density of \\u unicode escapes \u2014 suggests string obfuscation"
+      },
+      {
+        "technique": "XOR char operations",
+        "file": "aiFindInMainSearch.d85bc82a.js",
+        "line": 75,
+        "score": 5,
+        "reason": "XOR operations on single-char variables \u2014 string encryption technique"
+      },
+      {
+        "technique": "Dense unicode escapes",
+        "file": "aiFindInMainSearch.d85bc82a.js",
+        "line": 75,
+        "score": 4,
+        "reason": "High density of \\u unicode escapes \u2014 suggests string obfuscation"
+      },
+      {
+        "technique": "String.fromCharCode(numbers)",
+        "file": "aiFindInMainSearch.d85bc82a.js",
+        "line": 91,
+        "score": 6,
+        "reason": "Builds string from char codes with numeric args \u2014 classic obfuscation"
+      },
+      {
+        "technique": "Dense unicode escapes",
+        "file": "aiFindInMainSearch.d85bc82a.js",
+        "line": 179,
+        "score": 4,
+        "reason": "High density of \\u unicode escapes \u2014 suggests string obfuscation"
+      },
+      {
+        "technique": "String.fromCharCode(numbers)",
+        "file": "allWebsite.e084e880.js",
+        "line": 5,
+        "score": 6,
+        "reason": "Builds string from char codes with numeric args \u2014 classic obfuscation"
+      },
+      {
+        "technique": "Dense unicode escapes",
+        "file": "allWebsite.e084e880.js",
+        "line": 5,
+        "score": 4,
+        "reason": "High density of \\u unicode escapes \u2014 suggests string obfuscation"
+      },
+      {
+        "technique": "String.fromCharCode(numbers)",
+        "file": "allWebsite.e084e880.js",
+        "line": 9,
+        "score": 6,
+        "reason": "Builds string from char codes with numeric args \u2014 classic obfuscation"
+      },
+      {
+        "technique": "String.fromCharCode(numbers)",
+        "file": "bindShop.bf8ce889.js",
+        "line": 1,
+        "score": 6,
+        "reason": "Builds string from char codes with numeric args \u2014 classic obfuscation"
+      },
+      {
+        "technique": "Dense unicode escapes",
+        "file": "bindShop.bf8ce889.js",
+        "line": 1,
+        "score": 4,
+        "reason": "High density of \\u unicode escapes \u2014 suggests string obfuscation"
+      },
+      {
+        "technique": "String.fromCharCode(numbers)",
+        "file": "bindShop.bf8ce889.js",
+        "line": 5,
+        "score": 6,
+        "reason": "Builds string from char codes with numeric args \u2014 classic obfuscation"
+      },
+      {
+        "technique": "Dense unicode escapes",
+        "file": "bindShop.bf8ce889.js",
+        "line": 103,
+        "score": 4,
+        "reason": "High density of \\u unicode escapes \u2014 suggests string obfuscation"
+      },
+      {
+        "technique": "Dense unicode escapes",
+        "file": "bindShop.bf8ce889.js",
+        "line": 110,
+        "score": 4,
+        "reason": "High density of \\u unicode escapes \u2014 suggests string obfuscation"
+      },
+      {
+        "technique": "Dense unicode escapes",
+        "file": "bindShop.bf8ce889.js",
+        "line": 118,
+        "score": 4,
+        "reason": "High density of \\u unicode escapes \u2014 suggests string obfuscation"
+      },
+      {
+        "technique": "Dense unicode escapes",
+        "file": "bindShop.bf8ce889.js",
+        "line": 125,
+        "score": 4,
+        "reason": "High density of \\u unicode escapes \u2014 suggests string obfuscation"
+      }
+    ],
+    "exfiltration_chains": [
+      {
+        "chain": "data_collection",
+        "stage": "collect",
+        "file": "aiFindInMainSearch.d85bc82a.js",
+        "score": 4,
+        "reason": "Browser fingerprinting"
+      },
+      {
+        "chain": "data_collection",
+        "stage": "collect",
+        "file": "aiFindInMainSearch.d85bc82a.js",
+        "score": 5,
+        "reason": "Observes DOM changes \u2014 may capture dynamic content"
+      },
+      {
+        "chain": "data_packaging",
+        "stage": "package",
+        "file": "aiFindInMainSearch.d85bc82a.js",
+        "score": 3,
+        "reason": "Serializes data to JSON for transmission"
+      },
+      {
+        "chain": "data_packaging",
+        "stage": "package",
+        "file": "aiFindInMainSearch.d85bc82a.js",
+        "score": 5,
+        "reason": "Base64-encodes data \u2014 obfuscates exfiltrated content"
+      },
+      {
+        "chain": "data_packaging",
+        "stage": "package",
+        "file": "aiFindInMainSearch.d85bc82a.js",
+        "score": 3,
+        "reason": "URL-encodes data for transmission"
+      },
+      {
+        "chain": "data_packaging",
+        "stage": "package",
+        "file": "aiFindInMainSearch.d85bc82a.js",
+        "score": 4,
+        "reason": "Builds request payload with URL"
+      },
+      {
+        "chain": "data_collection",
+        "stage": "collect",
+        "file": "aiFindInMainSearch.d85bc82a.js",
+        "score": 8,
+        "reason": "Reads password field value"
+      },
+      {
+        "chain": "data_collection",
+        "stage": "collect",
+        "file": "aiFindInMainSearch.d85bc82a.js",
+        "score": 3,
+        "reason": "Visual fingerprinting"
+      },
+      {
+        "chain": "data_collection",
+        "stage": "collect",
+        "file": "aiFindInMainSearch.d85bc82a.js",
+        "score": 4,
+        "reason": "Browser fingerprinting"
+      },
+      {
+        "chain": "data_collection",
+        "stage": "collect",
+        "file": "aiFindInMainSearch.d85bc82a.js",
+        "score": 8,
+        "reason": "Intercepts Cookie headers"
+      },
+      {
+        "chain": "data_packaging",
+        "stage": "package",
+        "file": "aiFindInMainSearch.d85bc82a.js",
+        "score": 3,
+        "reason": "Serializes data to JSON for transmission"
+      },
+      {
+        "chain": "data_packaging",
+        "stage": "package",
+        "file": "aiFindInMainSearch.d85bc82a.js",
+        "score": 5,
+        "reason": "Base64-encodes data \u2014 obfuscates exfiltrated content"
+      },
+      {
+        "chain": "data_packaging",
+        "stage": "package",
+        "file": "aiFindInMainSearch.d85bc82a.js",
+        "score": 3,
+        "reason": "URL-encodes data for transmission"
+      },
+      {
+        "chain": "data_packaging",
+        "stage": "package",
+        "file": "aiFindInMainSearch.d85bc82a.js",
+        "score": 3,
+        "reason": "Joins collected data with delimiter"
+      },
+      {
+        "chain": "data_packaging",
+        "stage": "package",
+        "file": "aiFindInMainSearch.d85bc82a.js",
+        "score": 7,
+        "reason": "Appends cookie to data payload"
+      },
+      {
+        "chain": "data_transmission",
+        "stage": "transmit",
+        "file": "aiFindInMainSearch.d85bc82a.js",
+        "score": 8,
+        "reason": "Sends data via sendBeacon \u2014 fires even on page unload"
+      },
+      {
+        "chain": "data_collection",
+        "stage": "collect",
+        "file": "aiFindInMainSearch.d85bc82a.js",
+        "score": 8,
+        "reason": "Reads password field value"
+      },
+      {
+        "chain": "data_collection",
+        "stage": "collect",
+        "file": "aiFindInMainSearch.d85bc82a.js",
+        "score": 4,
+        "reason": "Captures current page URL"
+      },
+      {
+        "chain": "data_collection",
+        "stage": "collect",
+        "file": "aiFindInMainSearch.d85bc82a.js",
+        "score": 7,
+        "reason": "Hooks form submission events"
+      },
+      {
+        "chain": "data_collection",
+        "stage": "collect",
+        "file": "aiFindInMainSearch.d85bc82a.js",
+        "score": 8,
+        "reason": "Installs keylogger via keyboard event listener"
+      },
+      {
+        "chain": "data_collection",
+        "stage": "collect",
+        "file": "aiFindInMainSearch.d85bc82a.js",
+        "score": 4,
+        "reason": "Browser fingerprinting"
+      },
+      {
+        "chain": "data_packaging",
+        "stage": "package",
+        "file": "aiFindInMainSearch.d85bc82a.js",
+        "score": 3,
+        "reason": "Serializes data to JSON for transmission"
+      },
+      {
+        "chain": "data_packaging",
+        "stage": "package",
+        "file": "aiFindInMainSearch.d85bc82a.js",
+        "score": 3,
+        "reason": "URL-encodes data for transmission"
+      },
+      {
+        "chain": "data_packaging",
+        "stage": "package",
+        "file": "aiFindInMainSearch.d85bc82a.js",
+        "score": 3,
+        "reason": "Joins collected data with delimiter"
+      },
+      {
+        "chain": "data_packaging",
+        "stage": "package",
+        "file": "aiFindInMainSearch.d85bc82a.js",
+        "score": 4,
+        "reason": "Builds request payload with URL"
+      },
+      {
+        "chain": "data_collection",
+        "stage": "collect",
+        "file": "aiFindInMainSearch.d85bc82a.js",
+        "score": 7,
+        "reason": "Reads document.cookie directly"
+      },
+      {
+        "chain": "data_collection",
+        "stage": "collect",
+        "file": "aiFindInMainSearch.d85bc82a.js",
+        "score": 7,
+        "reason": "Hooks form submission events"
+      },
+      {
+        "chain": "data_collection",
+        "stage": "collect",
+        "file": "aiFindInMainSearch.d85bc82a.js",
+        "score": 8,
+        "reason": "Installs keylogger via keyboard event listener"
+      },
+      {
+        "chain": "data_collection",
+        "stage": "collect",
+        "file": "aiFindInMainSearch.d85bc82a.js",
+        "score": 5,
+        "reason": "Observes DOM changes \u2014 may capture dynamic content"
+      },
+      {
+        "chain": "data_packaging",
+        "stage": "package",
+        "file": "aiFindInMainSearch.d85bc82a.js",
+        "score": 3,
+        "reason": "Serializes data to JSON for transmission"
+      }
+    ],
+    "rules_matched": [
+      {
+        "rule": "CYBERHAVEN_BEHAVIOUR",
+        "severity": "CRITICAL",
+        "score": 40,
+        "evidence": [
+          "host_permission: https://*/* \u2014 unrestricted site access",
+          "permission: cookies \u2014 can read/write session cookies on any site",
+          "remote_config: fetches external URL at install/startup time",
+          "remote_config: fetched payload is executed via eval()",
+          "exfil_chain: COOKIE_THEFT confirmed \u2014 collect \u2192 serialize \u2192 transmit",
+          "network: external domain(s) on suspicious TLD: www.ozon.ru, ozon.ru, seller.ozon.ru"
+        ]
+      },
+      {
+        "rule": "DOM_INJECTION_BEHAVIOUR",
+        "severity": "HIGH",
+        "score": 25,
+        "evidence": [
+          "exfil_chain: FORM_JACKER \u2014 intercepts form submit + steals field values",
+          "exfil_chain: KEYLOGGER \u2014 keystroke capture + remote transmit detected",
+          "manifest: content_scripts injected into ALL websites",
+          "api: tabs.captureVisibleTab \u2014 takes screenshots of active tab"
+        ]
+      },
+      {
+        "rule": "SLEEPER_AGENT_BEHAVIOUR",
+        "severity": "CRITICAL",
+        "score": 40,
+        "evidence": [
+          "remote_config: periodic fetch detected (setInterval/setTimeout + fetch) \u2014 polls for updated instructions",
+          "remote_config: fetched remote data is executed via eval()",
+          "obfuscation: Possibly Obfuscated \u2014 code hidden from static review"
+        ]
+      },
+      {
+        "rule": "SUSPICIOUS_TLD_EXFIL",
+        "severity": "HIGH",
+        "score": 25,
+        "evidence": [
+          "network: 3 domain(s) on suspicious TLD \u2014 www.ozon.ru, ozon.ru, seller.ozon.ru",
+          "combined: cookie access + suspicious-TLD contact = high-confidence theft",
+          "exfil: 46 outbound transmit hit(s) paired with sus TLD"
+        ]
+      },
+      {
+        "rule": "SCREEN_CAPTURE_SURVEILLANCE",
+        "severity": "HIGH",
+        "score": 25,
+        "evidence": [
+          "apis: chrome.tabs.captureVisibleTab found in source",
+          "network: captured data likely sent to gw.alicdn.com"
+        ]
+      }
+    ],
+    "sandbox": {
+      "runtime_urls": [],
+      "eval_calls": [],
+      "chrome_api_calls": [],
+      "boxjs_iocs": [],
+      "deobfuscated_files": [],
+      "per_file_scores": [
+        {
+          "file": "aiFindInMainSearch.d85bc82a.js",
+          "score": 0,
+          "signals": []
+        },
+        {
+          "file": "allWebsite.e084e880.js",
+          "score": 0,
+          "signals": []
+        },
+        {
+          "file": "bindShop.bf8ce889.js",
+          "score": 0,
+          "signals": []
+        },
+        {
+          "file": "content-script2.ab95394e.js",
+          "score": 0,
+          "signals": []
+        },
+        {
+          "file": "content-scripts-of-pick.7776a3b9.js",
+          "score": 0,
+          "signals": []
+        },
+        {
+          "file": "content.0f069321.js",
+          "score": 0,
+          "signals": []
+        },
+        {
+          "file": "findSameGoodsBtn.3ed716dc.js",
+          "score": 0,
+          "signals": []
+        },
+        {
+          "file": "getWWUnRead.21bf76f1.js",
+          "score": 0,
+          "signals": []
+        },
+        {
+          "file": "installationChecker.1c3dad9b.js",
+          "score": 0,
+          "signals": []
+        },
+        {
+          "file": "orderLogistics.f491b9f7.js",
+          "score": 0,
+          "signals": []
+        },
+        {
+          "file": "wordsQuickCopy.f8d2e6a5.js",
+          "score": 0,
+          "signals": []
+        },
+        {
+          "file": "wordsSelection.08ebf15a.js",
+          "score": 0,
+          "signals": []
+        }
+      ]
+    }
+  }
+}

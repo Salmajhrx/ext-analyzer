@@ -1,0 +1,501 @@
+{
+  "meta": {
+    "analyzer": "CXT-SCAN v1.3",
+    "mode": "pre-install",
+    "timestamp": "2026-06-24T10:00:43.783634+00:00",
+    "source": "https://chromewebstore.google.com/detail/zoom-chrome-extension/kgjfgplpablkjnlkjmjdecgdpfankdle",
+    "unpacked_dir": "E:\\EXT ANALYZER\\ext-analyzer-v1.4rules\\ext-analyzer-v13\\samples\\kgjfgplpablkjnlkjmjdecgdpfankdle\\unpacked"
+  },
+  "extension": {
+    "name": "Zoom Chrome Extension",
+    "version": "1.9.13",
+    "manifest_version": 3,
+    "description": "Schedule Zoom meetings directly from Google Calendar",
+    "js_files_count": 11
+  },
+  "scores": {
+    "permissions": 12,
+    "apis": 0,
+    "network": 5,
+    "remote_config": 33,
+    "dynamic_exec": 27,
+    "exfiltration": 99,
+    "sandbox": 0,
+    "rules": 65,
+    "total": 241
+  },
+  "verdict": "MALICIOUS",
+  "findings": {
+    "permissions": {
+      "dangerous": [
+        {
+          "name": "storage",
+          "score": 2,
+          "reason": "Local storage (low risk alone, high risk combined)"
+        }
+      ],
+      "host_risks": [
+        {
+          "name": "https://www.google.com/calendar/*",
+          "score": 10,
+          "reason": "Wildcard: access to ALL websites"
+        },
+        {
+          "name": "https://calendar.google.com/calendar/*",
+          "score": 10,
+          "reason": "Wildcard: access to ALL websites"
+        },
+        {
+          "name": "https://*.zoom.us/*",
+          "score": 10,
+          "reason": "Wildcard: access to ALL websites"
+        },
+        {
+          "name": "https://*.zoom.com/*",
+          "score": 10,
+          "reason": "Wildcard: access to ALL websites"
+        }
+      ],
+      "dangerous_combos": []
+    },
+    "sensitive_apis": [],
+    "external_domains": [
+      {
+        "domain": "www.w3.org",
+        "url": "http://www.w3.org/2000/svg",
+        "file": "js\\content.bundle.js",
+        "score": 1,
+        "category": "external_domain",
+        "reason": "External domain contact"
+      },
+      {
+        "domain": "zoom.us",
+        "url": "https://zoom.us/buy?plan=pro&from=pro&zcid=2166&utm_source=Product&utm_medium=email&utm_content=FreeToPro&utm_campaign=${",
+        "file": "js\\content.bundle.js",
+        "score": 1,
+        "category": "external_domain",
+        "reason": "External domain contact"
+      },
+      {
+        "domain": "support.zoom.com",
+        "url": "https://support.zoom.com/hc/en/article?id=zm_kb&sysparm_article=KB0058782",
+        "file": "js\\content.bundle.js",
+        "score": 1,
+        "category": "external_domain",
+        "reason": "External domain contact"
+      },
+      {
+        "domain": "www.w3.org",
+        "url": "http://www.w3.org/1998/Math/MathML",
+        "file": "js\\lib.bundle.js",
+        "score": 1,
+        "category": "external_domain",
+        "reason": "External domain contact"
+      },
+      {
+        "domain": "www.w3.org",
+        "url": "http://www.w3.org/2000/svg",
+        "file": "js\\lib.bundle.js",
+        "score": 1,
+        "category": "external_domain",
+        "reason": "External domain contact"
+      },
+      {
+        "domain": "www.w3.org",
+        "url": "http://www.w3.org/1999/xhtml",
+        "file": "js\\lib.bundle.js",
+        "score": 1,
+        "category": "external_domain",
+        "reason": "External domain contact"
+      },
+      {
+        "domain": "www.w3.org",
+        "url": "http://www.w3.org/2000/svg",
+        "file": "js\\options.bundle.js",
+        "score": 1,
+        "category": "external_domain",
+        "reason": "External domain contact"
+      },
+      {
+        "domain": "www.zoommildev.com",
+        "url": "https://www.zoommildev.com/",
+        "file": "js\\utils.bundle.js",
+        "score": 1,
+        "category": "external_domain",
+        "reason": "External domain contact"
+      },
+      {
+        "domain": "support.zoom.us",
+        "url": "https://support.zoom.us/hc/en-us/articles/360048660871",
+        "file": "js\\utils.bundle.js",
+        "score": 1,
+        "category": "external_domain",
+        "reason": "External domain contact"
+      }
+    ],
+    "remote_config": [
+      {
+        "pattern": "documentcreateElement'\"script'\"srcs=",
+        "file": "js\\content.bundle.js",
+        "line": 1,
+        "score": 8,
+        "reason": "Dynamically creates script tag with remote src \u2014 loads remote code"
+      },
+      {
+        "pattern": "XMLHttpRequestresponseTexteval",
+        "file": "js\\lib.bundle.js",
+        "line": 2,
+        "score": 9,
+        "reason": "XHR response evaluated as code"
+      },
+      {
+        "pattern": "setIntervalfetchsetTimeoutfetch",
+        "file": "js\\utils.bundle.js",
+        "line": 1,
+        "score": 6,
+        "reason": "Periodic remote fetch \u2014 polls for updated instructions"
+      },
+      {
+        "pattern": "fetchversionfetchupdate",
+        "file": "js\\utils.bundle.js",
+        "line": 1,
+        "score": 5,
+        "reason": "Fetches remote version/update info \u2014 may trigger code replacement"
+      },
+      {
+        "pattern": "fetchthenJSONparsethen",
+        "file": "js\\utils.bundle.js",
+        "line": 1,
+        "score": 5,
+        "reason": "Fetch \u2192 parse JSON \u2192 act chain \u2014 remote instructions pattern"
+      }
+    ],
+    "dynamic_execution": [
+      {
+        "technique": "new Function(atob())",
+        "file": "js\\content.bundle.js",
+        "line": 1,
+        "score": 10,
+        "reason": "Creates function from base64-decoded string \u2014 obfuscated execution"
+      },
+      {
+        "technique": "Long base64 blob",
+        "file": "js\\content.bundle.js",
+        "line": 1,
+        "score": 5,
+        "reason": "Embedded base64 blob (80+ chars) \u2014 may contain hidden payload"
+      },
+      {
+        "technique": "Dense hex escapes",
+        "file": "js\\lib.bundle.js",
+        "line": 2,
+        "score": 5,
+        "reason": "High density of \\x hex escapes \u2014 suggests character-level obfuscation"
+      },
+      {
+        "technique": "Dense unicode escapes",
+        "file": "js\\lib.bundle.js",
+        "line": 2,
+        "score": 4,
+        "reason": "High density of \\u unicode escapes \u2014 suggests string obfuscation"
+      }
+    ],
+    "exfiltration_chains": [
+      {
+        "chain": "data_collection",
+        "stage": "collect",
+        "file": "js\\background.bundle.js",
+        "score": 8,
+        "reason": "Reads password field value"
+      },
+      {
+        "chain": "data_packaging",
+        "stage": "package",
+        "file": "js\\background.bundle.js",
+        "score": 3,
+        "reason": "Serializes data to JSON for transmission"
+      },
+      {
+        "chain": "data_collection",
+        "stage": "collect",
+        "file": "js\\content.bundle.js",
+        "score": 8,
+        "reason": "Reads password field value"
+      },
+      {
+        "chain": "data_collection",
+        "stage": "collect",
+        "file": "js\\content.bundle.js",
+        "score": 7,
+        "reason": "Hooks form submission events"
+      },
+      {
+        "chain": "data_collection",
+        "stage": "collect",
+        "file": "js\\content.bundle.js",
+        "score": 8,
+        "reason": "Installs keylogger via keyboard event listener"
+      },
+      {
+        "chain": "data_collection",
+        "stage": "collect",
+        "file": "js\\content.bundle.js",
+        "score": 5,
+        "reason": "Observes DOM changes \u2014 may capture dynamic content"
+      },
+      {
+        "chain": "data_collection",
+        "stage": "collect",
+        "file": "js\\content.bundle.js",
+        "score": 3,
+        "reason": "Visual fingerprinting"
+      },
+      {
+        "chain": "data_collection",
+        "stage": "collect",
+        "file": "js\\content.bundle.js",
+        "score": 4,
+        "reason": "Browser fingerprinting"
+      },
+      {
+        "chain": "data_packaging",
+        "stage": "package",
+        "file": "js\\content.bundle.js",
+        "score": 3,
+        "reason": "Serializes data to JSON for transmission"
+      },
+      {
+        "chain": "data_packaging",
+        "stage": "package",
+        "file": "js\\content.bundle.js",
+        "score": 3,
+        "reason": "URL-encodes data for transmission"
+      },
+      {
+        "chain": "data_packaging",
+        "stage": "package",
+        "file": "js\\content.bundle.js",
+        "score": 3,
+        "reason": "Joins collected data with delimiter"
+      },
+      {
+        "chain": "data_packaging",
+        "stage": "package",
+        "file": "js\\content.bundle.js",
+        "score": 4,
+        "reason": "Builds request payload with URL"
+      },
+      {
+        "chain": "PASSWORD_HARVEST",
+        "stage": "full_chain",
+        "file": "js\\content.bundle.js",
+        "score": 10,
+        "reason": "CONFIRMED PASSWORD HARVEST: collect password \u2192 package \u2192 transmit"
+      },
+      {
+        "chain": "KEYLOGGER",
+        "stage": "full_chain",
+        "file": "js\\content.bundle.js",
+        "score": 10,
+        "reason": "KEYLOGGER: keyboard listener \u2192 capture keystrokes \u2192 transmit"
+      },
+      {
+        "chain": "FORM_JACKER",
+        "stage": "full_chain",
+        "file": "js\\content.bundle.js",
+        "score": 10,
+        "reason": "FORM JACKING: intercept form submit \u2192 steal field values \u2192 exfil"
+      },
+      {
+        "chain": "data_packaging",
+        "stage": "package",
+        "file": "js\\injectobserver.bundle.js",
+        "score": 3,
+        "reason": "Serializes data to JSON for transmission"
+      },
+      {
+        "chain": "data_packaging",
+        "stage": "package",
+        "file": "js\\injectobserver.bundle.js",
+        "score": 3,
+        "reason": "URL-encodes data for transmission"
+      },
+      {
+        "chain": "data_packaging",
+        "stage": "package",
+        "file": "js\\injectobserver.bundle.js",
+        "score": 3,
+        "reason": "Joins collected data with delimiter"
+      },
+      {
+        "chain": "data_transmission",
+        "stage": "transmit",
+        "file": "js\\injectobserver.bundle.js",
+        "score": 6,
+        "reason": "XHR data transmission"
+      },
+      {
+        "chain": "data_collection",
+        "stage": "collect",
+        "file": "js\\lib.bundle.js",
+        "score": 8,
+        "reason": "Reads password field value"
+      },
+      {
+        "chain": "data_collection",
+        "stage": "collect",
+        "file": "js\\lib.bundle.js",
+        "score": 7,
+        "reason": "Hooks form submission events"
+      },
+      {
+        "chain": "data_collection",
+        "stage": "collect",
+        "file": "js\\lib.bundle.js",
+        "score": 8,
+        "reason": "Installs keylogger via keyboard event listener"
+      },
+      {
+        "chain": "data_collection",
+        "stage": "collect",
+        "file": "js\\lib.bundle.js",
+        "score": 3,
+        "reason": "Visual fingerprinting"
+      },
+      {
+        "chain": "data_packaging",
+        "stage": "package",
+        "file": "js\\lib.bundle.js",
+        "score": 3,
+        "reason": "URL-encodes data for transmission"
+      },
+      {
+        "chain": "data_packaging",
+        "stage": "package",
+        "file": "js\\lib.bundle.js",
+        "score": 3,
+        "reason": "Joins collected data with delimiter"
+      },
+      {
+        "chain": "data_transmission",
+        "stage": "transmit",
+        "file": "js\\lib.bundle.js",
+        "score": 6,
+        "reason": "XHR data transmission"
+      },
+      {
+        "chain": "FULL_EXFIL_CHAIN",
+        "stage": "full_chain",
+        "file": "js\\lib.bundle.js",
+        "score": 10,
+        "reason": "Complete exfiltration chain detected: collect(4 hits) \u2192 package(2 hits) \u2192 transmit(1 hits)"
+      },
+      {
+        "chain": "PASSWORD_HARVEST",
+        "stage": "full_chain",
+        "file": "js\\lib.bundle.js",
+        "score": 10,
+        "reason": "CONFIRMED PASSWORD HARVEST: collect password \u2192 package \u2192 transmit"
+      },
+      {
+        "chain": "KEYLOGGER",
+        "stage": "full_chain",
+        "file": "js\\lib.bundle.js",
+        "score": 10,
+        "reason": "KEYLOGGER: keyboard listener \u2192 capture keystrokes \u2192 transmit"
+      },
+      {
+        "chain": "FORM_JACKER",
+        "stage": "full_chain",
+        "file": "js\\lib.bundle.js",
+        "score": 10,
+        "reason": "FORM JACKING: intercept form submit \u2192 steal field values \u2192 exfil"
+      }
+    ],
+    "rules_matched": [
+      {
+        "rule": "DOM_INJECTION_BEHAVIOUR",
+        "severity": "HIGH",
+        "score": 25,
+        "evidence": [
+          "exfil_chain: FORM_JACKER \u2014 intercepts form submit + steals field values",
+          "exfil_chain: KEYLOGGER \u2014 keystroke capture + remote transmit detected"
+        ]
+      },
+      {
+        "rule": "SLEEPER_AGENT_BEHAVIOUR",
+        "severity": "CRITICAL",
+        "score": 40,
+        "evidence": [
+          "remote_config: periodic fetch detected (setInterval/setTimeout + fetch) \u2014 polls for updated instructions",
+          "source: eval(atob(...)) \u2014 base64 payload decoded and executed at runtime",
+          "obfuscation: Possibly Obfuscated \u2014 code hidden from static review"
+        ]
+      }
+    ],
+    "sandbox": {
+      "runtime_urls": [],
+      "eval_calls": [],
+      "chrome_api_calls": [],
+      "boxjs_iocs": [],
+      "deobfuscated_files": [],
+      "per_file_scores": [
+        {
+          "file": "js\\background.bundle.js",
+          "score": 0,
+          "signals": []
+        },
+        {
+          "file": "js\\bg-loader.js",
+          "score": 0,
+          "signals": []
+        },
+        {
+          "file": "js\\content.bundle.js",
+          "score": 0,
+          "signals": []
+        },
+        {
+          "file": "js\\extinstallcheck.bundle.js",
+          "score": 0,
+          "signals": []
+        },
+        {
+          "file": "js\\injectobserver.bundle.js",
+          "score": 0,
+          "signals": []
+        },
+        {
+          "file": "js\\lib.bundle.js",
+          "score": 0,
+          "signals": []
+        },
+        {
+          "file": "js\\logintransit.bundle.js",
+          "score": 0,
+          "signals": []
+        },
+        {
+          "file": "js\\options.bundle.js",
+          "score": 0,
+          "signals": []
+        },
+        {
+          "file": "js\\popup.bundle.js",
+          "score": 0,
+          "signals": []
+        },
+        {
+          "file": "js\\utils.bundle.js",
+          "score": 0,
+          "signals": []
+        },
+        {
+          "file": "js\\webclient_content.js",
+          "score": 0,
+          "signals": []
+        }
+      ]
+    }
+  }
+}
