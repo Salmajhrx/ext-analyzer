@@ -15,3 +15,6 @@ vER 1.0 Features;
 1. Static Manifest analyzer
 2. Sandbox analyzer for JS file
 3. JS file deobfuscator
+
+
+featuring @fakeium https://github.com/josemmo/fakeium
